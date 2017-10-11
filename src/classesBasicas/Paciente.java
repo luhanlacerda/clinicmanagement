@@ -1,9 +1,12 @@
 package classesBasicas;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CascadeType;
@@ -19,12 +22,24 @@ public class Paciente extends Pessoa {
 	@Cascade(CascadeType.SAVE_UPDATE)
 	private Convenio convenio;
 
+	@OneToMany(mappedBy = "paciente", fetch = FetchType.LAZY)
+	@Cascade(CascadeType.ALL)
+	private List<Consulta> listaConsultas;
+
 	public Convenio getConvenio() {
 		return convenio;
 	}
 
 	public void setConvenio(Convenio convenio) {
 		this.convenio = convenio;
+	}
+
+	public List<Consulta> getListaConsultas() {
+		return listaConsultas;
+	}
+
+	public void setListaConsultas(List<Consulta> listaConsultas) {
+		this.listaConsultas = listaConsultas;
 	}
 
 }
