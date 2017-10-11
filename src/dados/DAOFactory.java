@@ -8,7 +8,7 @@ public abstract class DAOFactory {
 	private static final EntityManagerFactory factory;
 
 	static {
-		factory = Persistence.createEntityManagerFactory("testePSC");
+		factory = Persistence.createEntityManagerFactory("ProjetoClinic");
 	}
 
 	public static SecretariaDAO getSecretariaDAO() {
