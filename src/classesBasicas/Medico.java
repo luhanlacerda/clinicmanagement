@@ -1,23 +1,40 @@
 package classesBasicas;
 
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+
+@Entity
 public class Medico extends Pessoa {
 
-	public String CRM;
-	public Especialidade Especialidade;
+	private String crm;
+	
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "id_especialidade", insertable = true, updatable = true)
+	@Fetch(FetchMode.JOIN)
+	@Cascade(CascadeType.SAVE_UPDATE)
+	private Especialidade especialidade;
 
-	public String getCRM() {
-		return CRM;
+	public String getCrm() {
+		return crm;
 	}
 
-	public void setCRM(String cRM) {
-		CRM = cRM;
+	public void setCrm(String crm) {
+		this.crm = crm;
 	}
 
 	public Especialidade getEspecialidade() {
-		return Especialidade;
+		return especialidade;
 	}
 
 	public void setEspecialidade(Especialidade especialidade) {
-		Especialidade = especialidade;
+		this.especialidade = especialidade;
 	}
+
 }

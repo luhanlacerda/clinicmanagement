@@ -1,16 +1,35 @@
 package classesBasicas;
 
+import java.util.List;
+
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
+
+@Entity
 public class Especialidade {
 
-	public int ID_Especialidade;
-	public String Descricao;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int id;
+	private String Descricao;
+	
+	@OneToMany(mappedBy = "especialidade", fetch = FetchType.LAZY)
+	@Cascade(CascadeType.ALL)
+	private List<Medico> listaMedicos;
 
-	public int getID_Especialidade() {
-		return ID_Especialidade;
+	public int getId() {
+		return id;
 	}
 
-	public void setID_Especialidade(int iD_Especialidade) {
-		ID_Especialidade = iD_Especialidade;
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public String getDescricao() {
@@ -19,6 +38,14 @@ public class Especialidade {
 
 	public void setDescricao(String descricao) {
 		Descricao = descricao;
+	}
+
+	public List<Medico> getListaMedicos() {
+		return listaMedicos;
+	}
+
+	public void setListaMedicos(List<Medico> listaMedicos) {
+		this.listaMedicos = listaMedicos;
 	}
 
 }
