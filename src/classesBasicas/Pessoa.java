@@ -2,12 +2,22 @@ package classesBasicas;
 
 import java.util.Calendar;
 
+import javax.persistence.Embedded;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.MappedSuperclass;
+
+@MappedSuperclass
 public abstract class Pessoa {
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private String nome;
 	private String rg;
 	private String cpf;
+	@Embedded
 	private Endereco endereco;
 	private String contato;
 	private Calendar dtNascimento;
@@ -16,10 +26,6 @@ public abstract class Pessoa {
 
 	public int getId() {
 		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
 	}
 
 	public String getNome() {
