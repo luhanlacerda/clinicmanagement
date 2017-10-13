@@ -24,4 +24,18 @@ public class Secretaria extends Pessoa {
 		this.listaConsultas = listaConsultas;
 	}
 
+	@Override
+	public String toString() {
+		String retorno = "";
+		retorno = "ID: " + super.getId();
+		retorno += "Nome: " + super.getNome();
+		retorno += "CPF: " + super.getCpf();
+		retorno += "Contato: " + super.getContato();
+		retorno += "E-Mail: " + super.getEmail();
+		retorno += "Data de Nascimento: " + super.getDtNascimento().toString();
+		retorno += "Estado Civil: " + super.getEstadoCivil();
+		return retorno;
+	}
+
+	
 }
