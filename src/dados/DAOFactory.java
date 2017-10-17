@@ -15,4 +15,9 @@ public abstract class DAOFactory {
 		SecretariaDAO dao = new SecretariaDAO(factory);
 		return dao;
 	}
+
+	public static ConsultaDAO getConsultaDAO() {
+		ConsultaDAO dao = new ConsultaDAO(factory);
+		return dao;
+	}
 }
