@@ -25,4 +25,9 @@ public abstract class DAOFactory {
 		PacienteDAO dao = new PacienteDAO(factory);
 		return dao;
 	}
+	
+	public static EspecialidadeDAO getEspecialidadeDAO(){
+		EspecialidadeDAO dao = new EspecialidadeDAO(factory);
+		return dao;
+	}
 }
