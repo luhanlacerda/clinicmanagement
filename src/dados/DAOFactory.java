@@ -20,4 +20,9 @@ public abstract class DAOFactory {
 		ConsultaDAO dao = new ConsultaDAO(factory);
 		return dao;
 	}
+
+	public static PacienteDAO getPacienteDAO() {
+		PacienteDAO dao = new PacienteDAO(factory);
+		return dao;
+	}
 }
