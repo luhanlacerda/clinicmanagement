@@ -15,4 +15,14 @@ public abstract class DAOFactory {
 		SecretariaDAO dao = new SecretariaDAO(factory);
 		return dao;
 	}
+
+	public static ConsultaDAO getConsultaDAO() {
+		ConsultaDAO dao = new ConsultaDAO(factory);
+		return dao;
+	}
+
+	public static PacienteDAO getPacienteDAO() {
+		PacienteDAO dao = new PacienteDAO(factory);
+		return dao;
+	}
 }
