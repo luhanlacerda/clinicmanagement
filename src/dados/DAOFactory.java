@@ -30,4 +30,10 @@ public abstract class DAOFactory {
 		EspecialidadeDAO dao = new EspecialidadeDAO(factory);
 		return dao;
 	}
+	
+	public static MedicoDAO getMedicoDAO() {
+		MedicoDAO dao = new MedicoDAO(factory);
+		return dao;
+	}
+	
 }
