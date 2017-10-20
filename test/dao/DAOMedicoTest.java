@@ -3,7 +3,7 @@ package dao;
 import classesBasicas.Endereco;
 import classesBasicas.Medico;
 import dados.DAOFactory;
-import dados.MedicoDAO;
+import dados.DAOMedico;
 
 public class DAOMedicoTest {
 
@@ -38,7 +38,7 @@ public class DAOMedicoTest {
 		// medico.setEspecialidade(DAOFactory.getEspecialidadeDAO().searchByKey(1));
 		// medico.setListaConsulta(Arrays.asList(DAOFactory.getConsultaDAO().searchByKey(1)));
 
-		MedicoDAO dao = DAOFactory.getMedicoDAO();
+		DAOMedico dao = DAOFactory.getMedicoDAO();
 		dao.insert(medico);
 
 		medico.setNome("Math");

@@ -11,28 +11,28 @@ public abstract class DAOFactory {
 		factory = Persistence.createEntityManagerFactory("ProjetoClinic");
 	}
 
-	public static SecretariaDAO getSecretariaDAO() {
-		SecretariaDAO dao = new SecretariaDAO(factory);
+	public static DAOSecretaria getSecretariaDAO() {
+		DAOSecretaria dao = new DAOSecretaria(factory);
 		return dao;
 	}
 
-	public static ConsultaDAO getConsultaDAO() {
-		ConsultaDAO dao = new ConsultaDAO(factory);
+	public static DAOConsulta getConsultaDAO() {
+		DAOConsulta dao = new DAOConsulta(factory);
 		return dao;
 	}
 
-	public static PacienteDAO getPacienteDAO() {
-		PacienteDAO dao = new PacienteDAO(factory);
+	public static DAOPaciente getPacienteDAO() {
+		DAOPaciente dao = new DAOPaciente(factory);
 		return dao;
 	}
 	
-	public static EspecialidadeDAO getEspecialidadeDAO(){
-		EspecialidadeDAO dao = new EspecialidadeDAO(factory);
+	public static DAOEspecialidade getEspecialidadeDAO(){
+		DAOEspecialidade dao = new DAOEspecialidade(factory);
 		return dao;
 	}
 	
-	public static MedicoDAO getMedicoDAO() {
-		MedicoDAO dao = new MedicoDAO(factory);
+	public static DAOMedico getMedicoDAO() {
+		DAOMedico dao = new DAOMedico(factory);
 		return dao;
 	}
 	

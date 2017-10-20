@@ -2,7 +2,7 @@ package dao;
 
 import classesBasicas.Especialidade;
 import dados.DAOFactory;
-import dados.EspecialidadeDAO;
+import dados.DAOEspecialidade;
 
 public class DAOEspecialidadeTest {
 	public static void main(String[] args) {
@@ -11,7 +11,10 @@ public class DAOEspecialidadeTest {
 		especialidade.setDescricao("Ortopedista");
 		
 
-		EspecialidadeDAO factory = DAOFactory.getEspecialidadeDAO();
+		DAOEspecialidade factory = DAOFactory.getEspecialidadeDAO();
 		factory.insert(especialidade);
+		
+		especialidade.setDescricao("or");
+		factory.getAllByDescricao(especialidade).forEach(e -> System.out.println(e.getId()));
 	}
 }

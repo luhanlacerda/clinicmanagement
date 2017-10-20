@@ -8,19 +8,20 @@ import javax.persistence.Query;
 
 import classesBasicas.Consulta;
 
-public class ConsultaDAO extends DAOGenerico<Consulta> {
+public class DAOConsulta extends DAOGenerico<Consulta> {
 
-	public ConsultaDAO(EntityManagerFactory emf) {
+	public DAOConsulta(EntityManagerFactory emf) {
 		super(emf);
 	}
 
-	public List<Consulta> searchByMedico(String filtro) {
+	@SuppressWarnings("unchecked")
+	public List<Consulta> getAllByMedico(Consulta filtro) {
 		EntityManager em = this.getEntityManagerFactory().createEntityManager();
 		List<Consulta> listaConsultas = null;
 		String consulta = "FROM Consulta c WHERE c.medico.nome LIKE :nome";
 		try {
 			Query query = em.createQuery(consulta, Consulta.class);
-			query.setParameter("nome", "%" + filtro + "%");
+			query.setParameter("nome", "%" + filtro.getMedico().getNome() + "%");
 			listaConsultas = query.getResultList();
 		} catch (RuntimeException re) {
 			re.printStackTrace();
@@ -29,13 +30,14 @@ public class ConsultaDAO extends DAOGenerico<Consulta> {
 		return listaConsultas;
 	}
 
-	public List<Consulta> searchByCRM(String filtro) {
+	@SuppressWarnings("unchecked")
+	public List<Consulta> getAllByCRM(Consulta filtro) {
 		EntityManager em = this.getEntityManagerFactory().createEntityManager();
 		List<Consulta> listaConsultas = null;
 		String consulta = "FROM Consulta c WHERE c.medico.crm LIKE :crm";
 		try {
 			Query query = em.createQuery(consulta, Consulta.class);
-			query.setParameter("crm", "%" + filtro + "%");
+			query.setParameter("crm", "%" + filtro.getMedico().getCrm() + "%");
 			listaConsultas = query.getResultList();
 		} catch (RuntimeException re) {
 			re.printStackTrace();
@@ -44,13 +46,14 @@ public class ConsultaDAO extends DAOGenerico<Consulta> {
 		return listaConsultas;
 	}
 
-	public List<Consulta> searchBySecretria(String filtro) {
+	@SuppressWarnings("unchecked")
+	public List<Consulta> getAllBySecretria(Consulta filtro) {
 		EntityManager em = this.getEntityManagerFactory().createEntityManager();
 		List<Consulta> listaConsultas = null;
 		String consulta = "FROM Consulta c WHERE c.secretaria.nome LIKE :nome";
 		try {
 			Query query = em.createQuery(consulta, Consulta.class);
-			query.setParameter("nome", "%" + filtro + "%");
+			query.setParameter("nome", "%" + filtro.getSecretaria().getNome() + "%");
 			listaConsultas = query.getResultList();
 		} catch (RuntimeException re) {
 			re.printStackTrace();
@@ -59,13 +62,14 @@ public class ConsultaDAO extends DAOGenerico<Consulta> {
 		return listaConsultas;
 	}
 
-	public List<Consulta> searchByPaciente(String filtro) {
+	@SuppressWarnings("unchecked")
+	public List<Consulta> getAllByPaciente(Consulta filtro) {
 		EntityManager em = this.getEntityManagerFactory().createEntityManager();
 		List<Consulta> listaConsultas = null;
 		String consulta = "FROM Consulta c WHERE c.paciente.nome LIKE :nome";
 		try {
 			Query query = em.createQuery(consulta, Consulta.class);
-			query.setParameter("nome", "%" + filtro + "%");
+			query.setParameter("nome", "%" + filtro.getPaciente().getNome() + "%");
 			listaConsultas = query.getResultList();
 		} catch (RuntimeException re) {
 			re.printStackTrace();

@@ -8,19 +8,20 @@ import javax.persistence.Query;
 
 import classesBasicas.Secretaria;
 
-public class SecretariaDAO extends DAOGenerico<Secretaria> {
+public class DAOSecretaria extends DAOGenerico<Secretaria> {
 
-	public SecretariaDAO(EntityManagerFactory emf) {
+	public DAOSecretaria(EntityManagerFactory emf) {
 		super(emf);
 	}
 
-	public List<Secretaria> searchByName(String filtro) {
+	@SuppressWarnings("unchecked")
+	public List<Secretaria> getAllByName(Secretaria filtro) {
 		EntityManager em = this.getEntityManagerFactory().createEntityManager();
 		List<Secretaria> listaSecretaria = null;
 		String consulta = "SELECT s FROM Secretaria s WHERE s.nome LIKE :nome";
 		try {
 			Query query = em.createQuery(consulta, Secretaria.class);
-			query.setParameter("nome",  "%" + filtro + "%");
+			query.setParameter("nome",  "%" + filtro.getNome() + "%");
 			listaSecretaria = query.getResultList();
 		} catch (RuntimeException re) {
 			re.printStackTrace();

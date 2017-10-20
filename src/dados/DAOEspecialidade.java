@@ -8,20 +8,21 @@ import javax.persistence.Query;
 
 import classesBasicas.Especialidade;
 
-public class EspecialidadeDAO extends DAOGenerico<Especialidade> {
+public class DAOEspecialidade extends DAOGenerico<Especialidade> {
 
-	public EspecialidadeDAO(EntityManagerFactory emf) {
+	public DAOEspecialidade(EntityManagerFactory emf) {
 		super(emf);
 
 	}
 
-	public List<Especialidade> searchByName(String filtro) {
+	@SuppressWarnings("unchecked")
+	public List<Especialidade> getAllByDescricao(Especialidade filtro) {
 		EntityManager em = this.getEntityManagerFactory().createEntityManager();
 		List<Especialidade> listaEspecialidade = null;
 		String consulta = "FROM Especialidade e WHERE e.Descricao LIKE :Descricao";
 		try {
 			Query query = em.createQuery(consulta, Especialidade.class);
-			query.setParameter("Descricao", "%" + filtro + "%");
+			query.setParameter("Descricao", "%" + filtro.getDescricao() + "%");
 			listaEspecialidade = query.getResultList();
 		} catch (RuntimeException re) {
 			re.printStackTrace();

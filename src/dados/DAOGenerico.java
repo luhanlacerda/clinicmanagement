@@ -46,6 +46,7 @@ public abstract class DAOGenerico<Entity> {
 		return objeto;
 	}
 
+	@SuppressWarnings("unchecked")
 	public final List<Entity> getAll() {
 		List<Entity> instance = null;
 		EntityManager em = this.entityManagerFactory.createEntityManager();

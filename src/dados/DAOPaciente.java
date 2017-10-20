@@ -7,13 +7,14 @@ import javax.persistence.Query;
 import java.util.List;
 import classesBasicas.Paciente;
 
-public class PacienteDAO extends DAOGenerico<Paciente> {
+public class DAOPaciente extends DAOGenerico<Paciente> {
 
-	public PacienteDAO(EntityManagerFactory emf) {
+	public DAOPaciente(EntityManagerFactory emf) {
 		super(emf);
 	}
 
-	public List<Paciente> searchByName(String filtro) {
+	@SuppressWarnings("unchecked")
+	public List<Paciente> getAllByName(Paciente filtro) {
 		
 		EntityManager em = this.getEntityManagerFactory().createEntityManager();
 		List<Paciente> listaPaciente = null;
@@ -23,7 +24,7 @@ public class PacienteDAO extends DAOGenerico<Paciente> {
 		try {
 			
 			Query query = em.createQuery(consulta, Paciente.class);
-			query.setParameter("nome", "%" + filtro + "%");
+			query.setParameter("nome", "%" + filtro.getNome() + "%");
 			listaPaciente = query.getResultList();
 			
 		} catch (RuntimeException re) {

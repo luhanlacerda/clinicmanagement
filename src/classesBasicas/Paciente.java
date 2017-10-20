@@ -25,7 +25,7 @@ public class Paciente extends Pessoa {
 	@OneToMany(mappedBy = "paciente", fetch = FetchType.LAZY)
 	@Cascade(CascadeType.ALL)
 	private List<Consulta> listaConsultas;
-
+	
 	public Convenio getConvenio() {
 		return convenio;
 	}

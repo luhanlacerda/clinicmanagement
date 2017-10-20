@@ -57,10 +57,6 @@ public class Consulta {
 		return id;
 	}
 
-	public void setId(int id) {
-		this.id = id;
-	}
-
 	public Calendar getHorario() {
 		return horario;
 	}

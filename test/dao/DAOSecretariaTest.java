@@ -2,7 +2,7 @@ package dao;
 
 import classesBasicas.Secretaria;
 import dados.DAOFactory;
-import dados.SecretariaDAO;
+import dados.DAOSecretaria;
 
 public class DAOSecretariaTest {
 
@@ -10,13 +10,14 @@ public class DAOSecretariaTest {
 		// TODO Auto-generated method stub
 
 		Secretaria secretaria = new Secretaria();
-		secretaria.setNome("Chupeta");
+		secretaria.setNome("Marta");
 		// secretaria.setCpf("123.456.789-01");
 
-		SecretariaDAO cu = DAOFactory.getSecretariaDAO();
-		// cu.insert(secretaria);
+		DAOSecretaria factory = DAOFactory.getSecretariaDAO();
+		//factory.insert(secretaria);
 
-		cu.searchByName("Chupeta");
+		secretaria.setNome("Mar");
+		factory.getAllByName(secretaria).forEach(s -> System.out.println(s.getId()));;
 	}
 
 }

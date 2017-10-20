@@ -24,6 +24,10 @@ public abstract class Pessoa {
 	private String email;
 	private String estadoCivil;
 
+	public Pessoa() {
+		endereco = new Endereco();
+	}
+	
 	public int getId() {
 		return id;
 	}

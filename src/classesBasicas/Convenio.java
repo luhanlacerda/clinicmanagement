@@ -18,18 +18,13 @@ public class Convenio {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private String descricao;
-	
+
 	@OneToMany(mappedBy = "convenio", fetch = FetchType.LAZY)
 	@Cascade(CascadeType.ALL)
 	private List<Paciente> listaPacientes;
 
 	public int getId() {
-
 		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
 	}
 
 	public String getDescricao() {

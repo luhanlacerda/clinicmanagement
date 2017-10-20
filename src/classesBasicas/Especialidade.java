@@ -28,10 +28,6 @@ public class Especialidade {
 		return id;
 	}
 
-	public void setId(int id) {
-		this.id = id;
-	}
-
 	public String getDescricao() {
 		return Descricao;
 	}
