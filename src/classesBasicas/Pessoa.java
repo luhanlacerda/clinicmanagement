@@ -2,11 +2,19 @@ package classesBasicas;
 
 import java.util.Calendar;
 
+import javax.persistence.Column;
 import javax.persistence.Embedded;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import classesBasicas.incorporada.Endereco;
+import classesBasicas.incorporada.EstadoCivil;
 
 @MappedSuperclass
 public abstract class Pessoa {
@@ -14,15 +22,23 @@ public abstract class Pessoa {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
+	@Column(nullable = false)
 	private String nome;
+	@Column(unique = true, nullable = false)
 	private String rg;
+	@Column(unique = true, nullable = false)
 	private String cpf;
 	@Embedded
 	private Endereco endereco;
+	@Column(nullable = false)
 	private String contato;
+	@Temporal(TemporalType.DATE)
 	private Calendar dtNascimento;
+	@Column(unique = true)
 	private String email;
-	private String estadoCivil;
+	@Column(nullable = false)
+	@Enumerated(EnumType.STRING)
+	private EstadoCivil estadoCivil;
 
 	public Pessoa() {
 		endereco = new Endereco();

@@ -19,7 +19,7 @@ public class DAOEspecialidade extends DAOGenerico<Especialidade> {
 	public List<Especialidade> getAllByDescricao(Especialidade filtro) {
 		EntityManager em = this.getEntityManagerFactory().createEntityManager();
 		List<Especialidade> listaEspecialidade = null;
-		String consulta = "FROM Especialidade e WHERE e.Descricao LIKE :Descricao";
+		String consulta = "FROM Especialidade e WHERE e.descricao LIKE :Descricao";
 		try {
 			Query query = em.createQuery(consulta, Especialidade.class);
 			query.setParameter("Descricao", "%" + filtro.getDescricao() + "%");

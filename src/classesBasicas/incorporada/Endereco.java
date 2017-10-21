@@ -1,4 +1,4 @@
-package classesBasicas;
+package classesBasicas.incorporada;
 
 import javax.persistence.Embeddable;
 

@@ -2,6 +2,7 @@ package classesBasicas;
 
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -17,6 +18,7 @@ public class Convenio {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
+	@Column(unique = true, nullable = false)
 	private String descricao;
 
 	@OneToMany(mappedBy = "convenio", fetch = FetchType.LAZY)
