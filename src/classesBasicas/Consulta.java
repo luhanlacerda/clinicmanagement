@@ -39,21 +39,18 @@ public class Consulta {
 	private EstadoConsulta estado;
 	private String receita;
 	
-	@Column(nullable = false)
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "id_medico", insertable = true, updatable = true)
 	@Fetch(FetchMode.JOIN)
 	@Cascade(CascadeType.SAVE_UPDATE)
 	private Medico medico;
 	
-	@Column(nullable = false)
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "id_paciente", insertable = true, updatable = true)
 	@Fetch(FetchMode.JOIN)
 	@Cascade(CascadeType.SAVE_UPDATE)
 	private Paciente paciente;
 	
-	@Column(nullable = false)
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "id_secretaria", insertable = true, updatable = true)
 	@Fetch(FetchMode.JOIN)
