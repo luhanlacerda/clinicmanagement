@@ -20,7 +20,6 @@ public class Medico extends Pessoa {
 	@Column(unique = true, nullable = false)
 	private String crm;
 
-	@Column(nullable = false)
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "id_especialidade", insertable = true, updatable = true)
 	@Fetch(FetchMode.JOIN)

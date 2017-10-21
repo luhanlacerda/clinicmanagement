@@ -17,7 +17,6 @@ import org.hibernate.annotations.FetchMode;
 @Entity
 public class Paciente extends Pessoa {
 
-	@Column(nullable = false)
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "id_convenio", insertable = true, updatable = true)
 	@Fetch(FetchMode.JOIN)
