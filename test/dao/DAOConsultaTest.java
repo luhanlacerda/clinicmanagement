@@ -3,7 +3,6 @@ package dao;
 import java.util.Calendar;
 
 import classesBasicas.Consulta;
-import classesBasicas.Consulta.Estado;
 import classesBasicas.Medico;
 import dados.DAOConsulta;
 import dados.DAOFactory;
@@ -12,6 +11,7 @@ import dados.DAOPaciente;
 import dados.DAOSecretaria;
 import classesBasicas.Paciente;
 import classesBasicas.Secretaria;
+import classesBasicas.incorporada.EstadoCivil;
 import classesBasicas.incorporada.EstadoConsulta;
 
 public class DAOConsultaTest {
@@ -43,7 +43,7 @@ public class DAOConsultaTest {
 		medico.getEndereco().setUf("PE");
 		medico.getEndereco().setPais("Brasil");
 		// medico.setEspecialidade(especialidade);
-		medico.setEstadoCivil("casado");
+		medico.setEstadoCivil(EstadoCivil.SOLTEIRO);
 		medico.setRg("1.111.111SDS/PE");
 
 		secretaria.setNome("Marta");
@@ -60,7 +60,7 @@ public class DAOConsultaTest {
 		Calendar dateSecretaria = Calendar.getInstance();
 		dateSecretaria.set(1994, Calendar.JANUARY, 24);
 		secretaria.setDtNascimento(dateSecretaria);
-		secretaria.setEstadoCivil("Solteira");
+		secretaria.setEstadoCivil(EstadoCivil.SOLTEIRO);
 		secretaria.setRg("2.222.222SDS/PE");
 		secretaria.setContato("2423-2221");
 
@@ -78,7 +78,7 @@ public class DAOConsultaTest {
 		Calendar datePaciente = Calendar.getInstance();
 		datePaciente.set(1994, Calendar.JANUARY, 24);
 		paciente.setDtNascimento(datePaciente);
-		paciente.setEstadoCivil("Casado");
+		paciente.setEstadoCivil(EstadoCivil.CASADO);
 		paciente.setRg("3.333.333SDS/PE");
 		paciente.setContato("3030-2020");
 

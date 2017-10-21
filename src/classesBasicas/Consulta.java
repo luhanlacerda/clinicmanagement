@@ -89,11 +89,11 @@ public class Consulta {
 	}
 
 	public EstadoConsulta getEstado() {
-		return EstadoConsulta;
+		return estado;
 	}
 
 	public void setEstado(EstadoConsulta estado) {
-		EstadoConsulta = estado;
+		this.estado = estado;
 	}
 
 	public String getReceita() {
