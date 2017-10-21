@@ -2,6 +2,7 @@ package classesBasicas;
 
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -18,7 +19,8 @@ public class Especialidade {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	private String Descricao;
+	@Column(unique = true, nullable = false)
+	private String descricao;
 	
 	@OneToMany(mappedBy = "especialidade", fetch = FetchType.LAZY)
 	@Cascade(CascadeType.ALL)
@@ -29,11 +31,11 @@ public class Especialidade {
 	}
 
 	public String getDescricao() {
-		return Descricao;
+		return descricao;
 	}
 
 	public void setDescricao(String descricao) {
-		Descricao = descricao;
+		descricao = descricao;
 	}
 
 	public List<Medico> getListaMedicos() {

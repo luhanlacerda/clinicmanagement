@@ -2,6 +2,7 @@ package classesBasicas;
 
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
@@ -16,8 +17,10 @@ import org.hibernate.annotations.FetchMode;
 @Entity
 public class Medico extends Pessoa {
 
+	@Column(unique = true, nullable = false)
 	private String crm;
 
+	@Column(nullable = false)
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "id_especialidade", insertable = true, updatable = true)
 	@Fetch(FetchMode.JOIN)

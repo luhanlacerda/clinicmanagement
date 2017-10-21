@@ -2,6 +2,7 @@ package classesBasicas;
 
 import java.util.Calendar;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -11,11 +12,15 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CascadeType;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
+
+import classesBasicas.incorporada.EstadoConsulta;
 
 @Entity
 public class Consulta {
@@ -23,35 +28,37 @@ public class Consulta {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
+	@Temporal(TemporalType.TIMESTAMP)
 	private Calendar horario;
+	@Column(nullable = false)
 	private int duracao;
 	private String observacoes;
-
+	
+	@Column(nullable = false)
 	@Enumerated(EnumType.STRING)
-	private Estado Estado;
+	private EstadoConsulta estado;
 	private String receita;
 	
+	@Column(nullable = false)
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "id_medico", insertable = true, updatable = true)
 	@Fetch(FetchMode.JOIN)
 	@Cascade(CascadeType.SAVE_UPDATE)
 	private Medico medico;
 	
+	@Column(nullable = false)
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "id_paciente", insertable = true, updatable = true)
 	@Fetch(FetchMode.JOIN)
 	@Cascade(CascadeType.SAVE_UPDATE)
 	private Paciente paciente;
 	
+	@Column(nullable = false)
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "id_secretaria", insertable = true, updatable = true)
 	@Fetch(FetchMode.JOIN)
 	@Cascade(CascadeType.SAVE_UPDATE)
 	private Secretaria secretaria;
-
-	public enum Estado {
-		Marcada, Cancelada, Finalizada
-	}
 
 	public int getId() {
 		return id;
@@ -81,12 +88,12 @@ public class Consulta {
 		this.observacoes = observacoes;
 	}
 
-	public Estado getEstado() {
-		return Estado;
+	public EstadoConsulta getEstado() {
+		return EstadoConsulta;
 	}
 
-	public void setEstado(Estado estado) {
-		Estado = estado;
+	public void setEstado(EstadoConsulta estado) {
+		EstadoConsulta = estado;
 	}
 
 	public String getReceita() {
