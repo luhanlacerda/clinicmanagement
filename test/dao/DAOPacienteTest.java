@@ -3,6 +3,7 @@ package dao;
 import java.util.Calendar;
 
 import classesBasicas.Paciente;
+import classesBasicas.incorporada.EstadoCivil;
 import dados.DAOFactory;
 import dados.DAOPaciente;
 
@@ -27,7 +28,7 @@ public class DAOPacienteTest {
 		paciente.getEndereco().setCidade("Recife");
 		paciente.getEndereco().setUf("PE");
 		paciente.getEndereco().setPais("Brasil");
-		paciente.setEstadoCivil("casado");
+		paciente.setEstadoCivil(EstadoCivil.CASADO);
 		paciente.setRg("1.111.111SDS/PE");
 		
 		DAOPaciente factory = DAOFactory.getPacienteDAO();

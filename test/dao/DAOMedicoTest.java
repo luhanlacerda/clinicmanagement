@@ -1,7 +1,8 @@
 package dao;
 
-import classesBasicas.Endereco;
 import classesBasicas.Medico;
+import classesBasicas.incorporada.Endereco;
+import classesBasicas.incorporada.EstadoCivil;
 import dados.DAOFactory;
 import dados.DAOMedico;
 
@@ -32,7 +33,7 @@ public class DAOMedicoTest {
 		medico.setContato("(81) 9.9999-9999");
 		medico.setDtNascimento(null);
 		medico.setEmail("medic@test.com");
-		medico.setEstadoCivil("Solteiro");
+		medico.setEstadoCivil(EstadoCivil.SOLTEIRO);
 
 		medico.setCrm("12345/PE");
 		// medico.setEspecialidade(DAOFactory.getEspecialidadeDAO().searchByKey(1));
