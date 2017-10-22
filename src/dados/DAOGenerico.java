@@ -170,5 +170,9 @@ public abstract class DAOGenerico<Entity> {
 	public void setPersistentClass(Class<Entity> persistentClass) {
 		this.persistentClass = persistentClass;
 	}
+	
+	protected String getTableName(Entity entity) {
+		return entity.getClass().getSimpleName();
+	}
 
 }
