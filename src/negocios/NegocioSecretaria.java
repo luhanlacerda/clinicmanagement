@@ -56,9 +56,8 @@ public class NegocioSecretaria implements INegocioSecretaria {
 			if (secretaria.getCpf().length() > RG_SIZE) {
 				throw new Exception("Caracteres acima do permitido para o RG");
 			}
-			// TESTAR (!validadorData.isValid(secretaria.getDtNascimento().toString(),
-			// "dd/MM/yyyy")
-			/*if (!CalendarValidator.getInstance().isValid(secretaria.getDtNascimento().toString(), "dd/MM/yyyy")) {
+			//Validar DATA!
+			/*if (!CalendarValidator.getInstance().isValid(secretaria.getDtNascimento().toString())) {
 				throw new Exception("Data de Nascimento inválida");
 			}*/
 			if (secretaria.getEndereco().getLogradouro().isEmpty()) {

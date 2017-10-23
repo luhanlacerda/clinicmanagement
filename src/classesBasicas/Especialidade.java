@@ -35,7 +35,7 @@ public class Especialidade {
 	}
 
 	public void setDescricao(String descricao) {
-		descricao = descricao;
+		this.descricao = descricao;
 	}
 
 	public List<Medico> getListaMedicos() {

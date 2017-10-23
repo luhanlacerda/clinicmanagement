@@ -33,9 +33,9 @@ public class NegocioSecretariaTest {
 
 		INegocioSecretaria negocioSecretaria = new NegocioSecretaria();
 
-		//negocioSecretaria.insert(secretaria);
-		secretaria = negocioSecretaria.searchByKey(14);
-		negocioSecretaria.remove(secretaria);
+		negocioSecretaria.insert(secretaria);
+		//secretaria = negocioSecretaria.searchByKey(14);
+		//negocioSecretaria.remove(secretaria);
 
 	}
 
