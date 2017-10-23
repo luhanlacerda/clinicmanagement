@@ -25,15 +25,20 @@ public abstract class DAOFactory {
 		DAOPaciente dao = new DAOPaciente(factory);
 		return dao;
 	}
-	
-	public static DAOEspecialidade getEspecialidadeDAO(){
+
+	public static DAOEspecialidade getEspecialidadeDAO() {
 		DAOEspecialidade dao = new DAOEspecialidade(factory);
 		return dao;
 	}
-	
+
 	public static DAOMedico getMedicoDAO() {
 		DAOMedico dao = new DAOMedico(factory);
 		return dao;
 	}
-	
+
+	public static DAOConvenio getConvenioDAO() {
+		DAOConvenio dao = new DAOConvenio(factory);
+		return dao;
+	}
+
 }
