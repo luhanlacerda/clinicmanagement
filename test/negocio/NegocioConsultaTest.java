@@ -10,7 +10,6 @@ import classesBasicas.Paciente;
 import classesBasicas.Secretaria;
 import classesBasicas.incorporada.EstadoCivil;
 import classesBasicas.incorporada.EstadoConsulta;
-import dados.DAOConsulta;
 import dados.DAOConvenio;
 import dados.DAOEspecialidade;
 import dados.DAOFactory;
@@ -107,7 +106,7 @@ public class NegocioConsultaTest {
 		daoSecretaria.insert(secretaria);
 		
 		consulta.setDuracao(1);
-		consulta.setEstado(EstadoConsulta.Marcada);
+		consulta.setEstado(EstadoConsulta.MARCADA);
 		Calendar dateConsulta = Calendar.getInstance();
 		dateConsulta.set(2017, Calendar.OCTOBER, 23, 19, 23);
 		consulta.setHorario(dateConsulta);

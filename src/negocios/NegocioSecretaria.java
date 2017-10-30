@@ -4,8 +4,6 @@ import java.io.Serializable;
 import java.util.Collection;
 import java.util.List;
 
-import javax.persistence.Convert;
-
 import org.apache.commons.validator.routines.CalendarValidator;
 import org.apache.commons.validator.routines.EmailValidator;
 
