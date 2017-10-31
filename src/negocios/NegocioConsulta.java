@@ -4,11 +4,10 @@ import java.io.Serializable;
 import java.util.Collection;
 import java.util.List;
 
-import org.apache.commons.validator.routines.CalendarValidator;
-
 import classesBasicas.Consulta;
 import dados.DAOConsulta;
 import dados.DAOFactory;
+import util.ValidatorUtils;
 
 public class NegocioConsulta implements INegocioConsulta {
 
@@ -40,14 +39,15 @@ public class NegocioConsulta implements INegocioConsulta {
 			if (consulta.getPaciente().equals(null)) {
 				throw new Exception(ERRO_PACIENTE);
 			}
+			
 			if (consulta.getSecretaria().equals(null)) {
 				throw new Exception(ERRO_SECRETARIA);
 			}
-			// CORRIGIR
-			/*
-			 * if (CalendarValidator.getInstance().isValid(consulta.getEstado().toString()))
-			 * { throw new Exception(ERRO_HORARIO); }
-			 */
+
+			if (!ValidatorUtils.validate(consulta.getHorario())) {
+				throw new Exception(ERRO_HORARIO);
+			}
+			
 			consultaDAO.insert(consulta);
 		} catch (Exception ex) {
 			ex.printStackTrace();
@@ -72,14 +72,15 @@ public class NegocioConsulta implements INegocioConsulta {
 			if (consulta.getPaciente().equals(null)) {
 				throw new Exception(ERRO_PACIENTE);
 			}
+			
 			if (consulta.getSecretaria().equals(null)) {
 				throw new Exception(ERRO_SECRETARIA);
 			}
-			// CORRIGIR
-			/*
-			 * if (CalendarValidator.getInstance().isValid(consulta.getEstado().toString()))
-			 * { throw new Exception(ERRO_HORARIO); }
-			 */
+			
+			if (!ValidatorUtils.validate(consulta.getHorario())) {
+				throw new Exception(ERRO_HORARIO);
+			}
+			
 			consultaDAO.insert(consulta);
 		} catch (Exception ex) {
 			ex.printStackTrace();
@@ -133,14 +134,15 @@ public class NegocioConsulta implements INegocioConsulta {
 			if (consulta.getPaciente().equals(null)) {
 				throw new Exception(ERRO_PACIENTE);
 			}
+			
 			if (consulta.getSecretaria().equals(null)) {
 				throw new Exception(ERRO_SECRETARIA);
 			}
-			// CORRIGIR
-			/*
-			 * if (CalendarValidator.getInstance().isValid(consulta.getEstado().toString()))
-			 * { throw new Exception(ERRO_HORARIO); }
-			 */
+
+			if (!ValidatorUtils.validate(consulta.getHorario())) {
+				throw new Exception(ERRO_HORARIO);
+			}
+			
 			consultaDAO.refresh(consulta);
 		} catch (Exception ex) {
 			ex.printStackTrace();

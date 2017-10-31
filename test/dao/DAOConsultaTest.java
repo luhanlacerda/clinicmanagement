@@ -82,7 +82,7 @@ public class DAOConsultaTest {
 		paciente.setRg("3.333.333SDS/PE");
 		paciente.setContato("3030-2020");
 
-		consulta.setEstado(EstadoConsulta.Marcada);
+		consulta.setEstado(EstadoConsulta.MARCADA);
 		consulta.setDuracao(01);
 		Calendar dateConsulta = Calendar.getInstance();
 		dateConsulta.set(2017, Calendar.OCTOBER, 17, 12, 30);

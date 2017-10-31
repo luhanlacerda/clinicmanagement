@@ -20,7 +20,7 @@ public class NegocioEspecialidade implements INegocioEspecialidade {
 
 		try {
 			if (especialidade.getDescricao().trim().isEmpty()) {
-				throw new Exception("Campo descrição especialidade vazio. Informe a descrição de especialidade.");
+				throw new Exception("Campo descriï¿½ï¿½o especialidade vazio. Informe a descriï¿½ï¿½o de especialidade.");
 			}
 
 			if (especialidade.getDescricao().equals(null)) {
@@ -28,13 +28,12 @@ public class NegocioEspecialidade implements INegocioEspecialidade {
 			}
 
 			if (especialidade.getDescricao().length() > DESCRICAO_SIZE) {
-				throw new Exception("Caracteres acima do permitido para descrição de especialidade.");
+				throw new Exception("Caracteres acima do permitido para descriï¿½ï¿½o de especialidade.");
 			}
 
 			if (especialidade.getId() < 1) {
 				throw new Exception("Id especialidade inexistente. Informe um Id maior que 1.");
 			}
-			;
 
 			especialidadeDAO.insert(especialidade);
 		} catch (Exception ex) {
@@ -47,11 +46,11 @@ public class NegocioEspecialidade implements INegocioEspecialidade {
 		try {
 
 			if (especialidade.getDescricao().trim().isEmpty()) {
-				throw new Exception("Campo descrição especialidade vazio. Por favor, informe a descrição.");
+				throw new Exception("Campo descriï¿½ï¿½o especialidade vazio. Por favor, informe a descriï¿½ï¿½o.");
 			}
 
 			if (especialidade.getDescricao().length() > DESCRICAO_SIZE) {
-				throw new Exception("Caracteres acima do permitido para descrição de especialidade.");
+				throw new Exception("Caracteres acima do permitido para descriï¿½ï¿½o de especialidade.");
 			}
 
 			if (especialidade.getDescricao().equals(null)) {
@@ -86,7 +85,7 @@ public class NegocioEspecialidade implements INegocioEspecialidade {
 	public Especialidade searchByKey(Serializable chave) {
 		try {
 			if (chave.equals(null)) {
-				throw new Exception("Id inválido.");
+				throw new Exception("Id invï¿½lido.");
 			}
 		} catch (Exception ex) {
 			ex.printStackTrace();
@@ -98,7 +97,7 @@ public class NegocioEspecialidade implements INegocioEspecialidade {
 	public void refresh(Especialidade especialidade) {
 		try {
 			if (especialidade.getDescricao().trim().isEmpty()) {
-				throw new Exception("Campo descrição especialidade vazio. Informe a descrição de especialidade.");
+				throw new Exception("Campo descriï¿½ï¿½o especialidade vazio. Informe a descriï¿½ï¿½o de especialidade.");
 			}
 
 			if (especialidade.getDescricao().equals(null)) {
@@ -106,7 +105,7 @@ public class NegocioEspecialidade implements INegocioEspecialidade {
 			}
 
 			if (especialidade.getDescricao().length() > DESCRICAO_SIZE) {
-				throw new Exception("Caracteres acima do permitido para descrição de especialidade.");
+				throw new Exception("Caracteres acima do permitido para descriï¿½ï¿½o de especialidade.");
 			}
 
 			especialidadeDAO.refresh(especialidade);
