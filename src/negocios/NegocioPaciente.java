@@ -1,6 +1,7 @@
 package negocios;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
@@ -279,13 +280,15 @@ public class NegocioPaciente implements INegocioPaciente {
 		}
 	}
 	
+	@SuppressWarnings("unchecked")
 	@Override
-	public void insertCollection(Collection<Paciente> colecao) {
-		pacienteDAO.insertCollection(colecao);
+	public <T> void insertCollection(ArrayList<T> colecao, Class<T> classType) {
+		pacienteDAO.insertCollection((Collection<Paciente>) colecao);
 	}
 	
+	@SuppressWarnings("unchecked")
 	@Override
-	public Paciente searchByKey(Serializable chave) {
+	public <T> T searchByKey(Serializable chave, Class<T> classType) {
 		try {
 			if (chave.equals(null)) {
 				throw new Exception("Id inv�lido");
@@ -293,7 +296,8 @@ public class NegocioPaciente implements INegocioPaciente {
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		}
-		return pacienteDAO.searchByKey(chave);
+		
+		return (T) pacienteDAO.searchByKey(chave);
 	}
 	
 	@Override

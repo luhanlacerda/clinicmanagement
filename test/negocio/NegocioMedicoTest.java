@@ -35,7 +35,7 @@ public class NegocioMedicoTest {
 		INegocioMedico negocioMedico = new NegocioMedico();
 
 		//negocioMedico.insert(medico);
-		medico = negocioMedico.searchByKey(2);
+		medico = negocioMedico.searchByKey(2, Medico.class);
 		negocioMedico.remove(medico);
 	}
 

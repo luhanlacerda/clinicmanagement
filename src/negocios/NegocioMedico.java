@@ -1,6 +1,7 @@
 package negocios;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
@@ -287,13 +288,15 @@ public class NegocioMedico implements INegocioMedico {
 		}
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
-	public void insertCollection(Collection<Medico> colecao) {
-		medicoDAO.insertCollection(colecao);
+	public <T> void insertCollection(ArrayList<T> colecao, Class<T> classType) {
+		medicoDAO.insertCollection((Collection<Medico>) colecao);
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
-	public Medico searchByKey(Serializable chave) {
+	public <T> T searchByKey(Serializable chave, Class<T> classType) {
 		try {
 			if (chave.equals(null)) {
 				throw new Exception("Id inválido");
@@ -301,7 +304,8 @@ public class NegocioMedico implements INegocioMedico {
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		}
-		return medicoDAO.searchByKey(chave);
+		
+		return (T) medicoDAO.searchByKey(chave);
 	}
 
 	@Override

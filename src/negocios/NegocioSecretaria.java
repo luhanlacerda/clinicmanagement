@@ -1,6 +1,7 @@
 package negocios;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
@@ -277,13 +278,15 @@ public class NegocioSecretaria implements INegocioSecretaria {
 		}
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
-	public void insertCollection(Collection<Secretaria> colecao) {
-		secretariaDAO.insertCollection(colecao);
+	public <T> void insertCollection(ArrayList<T> colecao, Class<T> classType) {
+		secretariaDAO.insertCollection((Collection<Secretaria>) colecao);
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
-	public Secretaria searchByKey(Serializable chave) {
+	public <T> T searchByKey(Serializable chave, Class<T> classType) {
 		try {
 			if (chave.equals(null)) {
 				throw new Exception("Id inválido");
@@ -291,7 +294,7 @@ public class NegocioSecretaria implements INegocioSecretaria {
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		}
-		return secretariaDAO.searchByKey(chave);
+		return (T) secretariaDAO.searchByKey(chave);
 	}
 
 	@Override
