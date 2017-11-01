@@ -15,7 +15,7 @@ public class NegocioConvenioTest {
 
 		INegocioConvenio negocioConvenio = new NegocioConvenio();
 
-		convenio = negocioConvenio.searchByKey(1);
+		convenio = negocioConvenio.searchByKey(1, Convenio.class);
 		negocioConvenio.remove(convenio);
 		// negocioConvenio.insert(convenio);
 

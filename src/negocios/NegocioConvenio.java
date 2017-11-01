@@ -1,6 +1,7 @@
 package negocios;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
@@ -62,13 +63,15 @@ public class NegocioConvenio implements INegocioConvenio {
 		}
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
-	public void insertCollection(Collection<Convenio> colecao) {
-		convenioDAO.insertCollection(colecao);
+	public <T> void insertCollection(ArrayList<T> colecao, Class<T> classType) {
+		convenioDAO.insertCollection((Collection<Convenio>) colecao);
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
-	public Convenio searchByKey(Serializable chave) {
+	public <T> T searchByKey(Serializable chave, Class<T> classType) {
 		try {
 			if (chave.equals(null)) {
 				throw new Exception("Id inv�lido");
@@ -76,7 +79,8 @@ public class NegocioConvenio implements INegocioConvenio {
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		}
-		return convenioDAO.searchByKey(chave);
+		
+		return (T) convenioDAO.searchByKey(chave);
 	}
 
 	@Override

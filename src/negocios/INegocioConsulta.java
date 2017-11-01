@@ -1,22 +1,16 @@
 package negocios;
 
-import java.io.Serializable;
-import java.util.Collection;
 import java.util.List;
 
 import classesBasicas.Consulta;
 
-public interface INegocioConsulta {
+public interface INegocioConsulta extends INegocioGenerico {
 
 	public void insert(Consulta consulta);
 
 	public void update(Consulta consulta);
 
 	public void remove(Consulta consulta);
-
-	public void insertCollection(Collection<Consulta> colecao);
-
-	public Consulta searchByKey(Serializable chave);
 
 	public void refresh(Consulta consulta);
 	

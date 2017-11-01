@@ -12,7 +12,7 @@ public class NegocioEspecialidadeTest {
 
 		INegocioEspecialidade negocioEspecialidade = new NegocioEspecialidade();
 
-		especialidade = negocioEspecialidade.searchByKey(2);
+		especialidade = negocioEspecialidade.searchByKey(2, Especialidade.class);
 		negocioEspecialidade.remove(especialidade);
 
 	}
