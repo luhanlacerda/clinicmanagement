@@ -13,7 +13,6 @@ public class DAOEspecialidade extends DAOGenerico<Especialidade> {
 
 	public DAOEspecialidade(EntityManagerFactory emf) {
 		super(emf);
-
 	}
 
 	@SuppressWarnings("unchecked")

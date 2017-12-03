@@ -10,7 +10,7 @@ import negocios.Fachada;
 public class FachadaTest {
 
 	public static void main(String[] args) {
-		Fachada fachada = Fachada.getInstance();
+		Fachada fachada = new Fachada();
 
 		Convenio convenio1 = new Convenio();
 		convenio1.setDescricao("HapVida");

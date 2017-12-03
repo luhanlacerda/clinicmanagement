@@ -7,14 +7,13 @@ import java.util.List;
 import classesBasicas.Consulta;
 import classesBasicas.Convenio;
 import classesBasicas.Especialidade;
+import classesBasicas.Login;
 import classesBasicas.Medico;
 import classesBasicas.Paciente;
 import classesBasicas.Secretaria;
 
 public class Fachada implements INegocioConsulta, INegocioConvenio, INegocioEspecialidade, INegocioMedico,
-		INegocioPaciente, INegocioSecretaria {
-
-	private static Fachada fachada;
+		INegocioPaciente, INegocioSecretaria, INegocioLogin {
 
 	private INegocioConsulta negocioConsulta;
 	private INegocioConvenio negocioConvenio;
@@ -22,22 +21,16 @@ public class Fachada implements INegocioConsulta, INegocioConvenio, INegocioEspe
 	private INegocioMedico negocioMedico;
 	private INegocioPaciente negocioPaciente;
 	private INegocioSecretaria negocioSecretaria;
+	private INegocioLogin negocioLogin;
 
-	private Fachada() {
+	public Fachada() {
 		negocioConsulta = new NegocioConsulta();
 		negocioConvenio = new NegocioConvenio();
 		negocioEspecialidade = new NegocioEspecialidade();
 		negocioMedico = new NegocioMedico();
 		negocioPaciente = new NegocioPaciente();
 		negocioSecretaria = new NegocioSecretaria();
-	}
-
-	public static Fachada getInstance() {
-		if (fachada == null) {
-			fachada = new Fachada();
-		}
-
-		return fachada;
+		negocioLogin = new NegocioLogin();
 	}
 
 	@Override
@@ -259,6 +252,26 @@ public class Fachada implements INegocioConsulta, INegocioConvenio, INegocioEspe
 	@Override
 	public List<Consulta> getAllByPaciente(Consulta filtro) {
 		return negocioConsulta.getAllByPaciente(filtro);
+	}
+
+	@Override
+	public void insert(Login login) throws Exception {
+		negocioLogin.insert(login);
+	}
+
+	@Override
+	public void update(Login login) throws Exception {
+		negocioLogin.update(login);
+	}
+
+	@Override
+	public void refresh(Login login) {
+		negocioLogin.refresh(login);
+	}
+
+	@Override
+	public Login login(Login login) throws Exception {
+		return negocioLogin.login(login);
 	}
 
 }

@@ -40,5 +40,10 @@ public abstract class DAOFactory {
 		DAOConvenio dao = new DAOConvenio(factory);
 		return dao;
 	}
+	
+	public static DAOLogin getLoginDAO() {
+		DAOLogin dao = new DAOLogin(factory);
+		return dao;
+	}
 
 }
