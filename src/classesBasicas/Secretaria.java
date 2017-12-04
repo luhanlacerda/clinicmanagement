@@ -36,6 +36,5 @@ public class Secretaria extends Pessoa {
 		retorno += "Estado Civil: " + super.getEstadoCivil();
 		return retorno;
 	}
-
 	
 }

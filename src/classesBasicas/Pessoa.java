@@ -4,23 +4,28 @@ import java.util.Calendar;
 
 import javax.persistence.Column;
 import javax.persistence.Embedded;
+import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.MappedSuperclass;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import classesBasicas.incorporada.Endereco;
 import classesBasicas.incorporada.EstadoCivil;
 
-@MappedSuperclass
-public abstract class Pessoa {
+@Entity
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+public class Pessoa {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.TABLE)
 	private int id;
 	@Column(nullable = false)
 	private String nome;
@@ -34,11 +39,15 @@ public abstract class Pessoa {
 	private String contato;
 	@Temporal(TemporalType.DATE)
 	private Calendar dtNascimento;
-	@Column(unique = true)
+	@Column(unique = true, nullable = false)
 	private String email;
 	@Column(nullable = false)
 	@Enumerated(EnumType.STRING)
 	private EstadoCivil estadoCivil;
+	@OneToOne
+	@JoinColumn(name = "login")
+	private Login login;
+	
 
 	public Pessoa() {
 		endereco = new Endereco();
@@ -110,6 +119,10 @@ public abstract class Pessoa {
 
 	public void setEstadoCivil(EstadoCivil estadoCivil) {
 		this.estadoCivil = estadoCivil;
+	}
+
+	public Login getLogin() {
+		return login;
 	}
 
 }
