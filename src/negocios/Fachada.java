@@ -47,6 +47,8 @@ public class Fachada implements INegocioConsulta, INegocioConvenio, INegocioEspe
 			negocioPaciente.insertCollection(colecao, classType);
 		else if (classType == Secretaria.class)
 			negocioSecretaria.insertCollection(colecao, classType);
+		else if (classType == Login.class)
+			negocioLogin.insertCollection(colecao, classType);
 		else
 			throw new UnsupportedOperationException();
 	}
@@ -65,7 +67,10 @@ public class Fachada implements INegocioConsulta, INegocioConvenio, INegocioEspe
 			return negocioPaciente.searchByKey(chave, classType);
 		else if (classType == Secretaria.class)
 			return negocioSecretaria.searchByKey(chave, classType);
+		else if (classType == Login.class)
+			return negocioLogin.searchByKey(chave, classType);
 		else
+			
 			throw new UnsupportedOperationException();
 	}
 	
@@ -83,7 +88,9 @@ public class Fachada implements INegocioConsulta, INegocioConvenio, INegocioEspe
 			return negocioPaciente.getAll(classType);
 		else if (classType == Secretaria.class)
 			return negocioSecretaria.getAll(classType);
-		else
+		else if (classType == Login.class)
+		return negocioLogin.getAll(classType);
+	else
 			throw new UnsupportedOperationException();
 	}
 
@@ -291,6 +298,11 @@ public class Fachada implements INegocioConsulta, INegocioConvenio, INegocioEspe
 	@Override
 	public Login login(Login login) throws Exception {
 		return negocioLogin.login(login);
+	}
+
+	@Override
+	public void remove(Login login) throws Exception {
+		negocioLogin.remove(login);
 	}
 	
 }
