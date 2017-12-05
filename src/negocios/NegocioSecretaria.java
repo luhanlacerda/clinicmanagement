@@ -42,9 +42,9 @@ public class NegocioSecretaria implements INegocioSecretaria {
 				throw new Exception("Caracteres acima do permitido para o Nome");
 			}
 			
-			if (!EmailValidator.getInstance().isValid(secretaria.getEmail())) {
+			/*if (!EmailValidator.getInstance().isValid(secretaria.getEmail())) {
 				throw new Exception("E-Mail inválido");
-			}
+			}*/
 			
 			if (secretaria.getCpf().trim().equals("   .   .   -  ")) {
 				throw new Exception("Informar CPF");
@@ -62,9 +62,9 @@ public class NegocioSecretaria implements INegocioSecretaria {
 				throw new Exception("Caracteres acima do permitido para o RG");
 			}
 			
-			if (!ValidatorUtils.validate(secretaria.getDtNascimento())) {
+			/*if (!ValidatorUtils.validate(secretaria.getDtNascimento())) {
 				throw new Exception("Data de Nascimento inválida");
-			}
+			}*/
 			
 			if (secretaria.getEndereco().getLogradouro().isEmpty()) {
 				throw new Exception("Informar Logradouro");
@@ -159,9 +159,9 @@ public class NegocioSecretaria implements INegocioSecretaria {
 				throw new Exception("Caracteres acima do permitido para o Nome");
 			}
 			
-			if (!EmailValidator.getInstance().isValid(secretaria.getEmail())) {
+			/*if (!EmailValidator.getInstance().isValid(secretaria.getEmail())) {
 				throw new Exception("E-Mail inválido");
-			}
+			}*/
 			
 			if (secretaria.getCpf().trim().equals("   .   .   -  ")) {
 				throw new Exception("Informar CPF");
@@ -179,9 +179,9 @@ public class NegocioSecretaria implements INegocioSecretaria {
 				throw new Exception("Caracteres acima do permitido para o RG");
 			}
 			
-			if (!ValidatorUtils.validate(secretaria.getDtNascimento())) {
+			/*if (!ValidatorUtils.validate(secretaria.getDtNascimento())) {
 				throw new Exception("Data de Nascimento inválida");
-			}
+			}*/
 			
 			if (secretaria.getEndereco().getLogradouro().isEmpty()) {
 				throw new Exception("Informar Logradouro");
@@ -418,4 +418,11 @@ public class NegocioSecretaria implements INegocioSecretaria {
 	public List<Secretaria> getAllByName(Secretaria filtro) {
 		return secretariaDAO.getAllByName(filtro);
 	}
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	public <T> List<T> getAll(Class<T> classType) {
+		return (List<T>) secretariaDAO.getAll();
+	}
+	
 }

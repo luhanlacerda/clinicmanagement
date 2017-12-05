@@ -6,13 +6,13 @@ import classesBasicas.Secretaria;
 
 public interface INegocioSecretaria extends INegocioGenerico {
 
-	public void insert(Secretaria secretaria);
+	public void insert(Secretaria secretaria) throws Exception;
 
-	public void update(Secretaria secretaria);
+	public void update(Secretaria secretaria) throws Exception;
 
-	public void remove(Secretaria secretaria);
+	public void remove(Secretaria secretaria) throws Exception;
 
-	public void refresh(Secretaria secretaria);
+	public void refresh(Secretaria secretaria) throws Exception;
 	
-	public List<Secretaria> getAllByName(Secretaria filtro);
+	public List<Secretaria> getAllByName(Secretaria filtro) throws Exception;
 }

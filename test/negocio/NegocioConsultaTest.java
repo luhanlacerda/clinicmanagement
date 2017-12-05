@@ -21,7 +21,7 @@ import negocios.NegocioConsulta;
 
 public class NegocioConsultaTest {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Exception {
 
 		Consulta consulta = new Consulta();
 		
@@ -52,7 +52,7 @@ public class NegocioConsultaTest {
 		medico.setContato("(81) 9.9999-9999");
 		Calendar dateMedico = Calendar.getInstance();
 		dateMedico.set(1991, Calendar.AUGUST, 02);
-		medico.setDtNascimento(dateMedico);
+		medico.setDtNascimento(dateMedico.getTime());
 		medico.setEmail("medic@test.com");
 		medico.setEstadoCivil(EstadoCivil.SOLTEIRO);
 		medico.getEndereco().setLogradouro("rua 01");
@@ -71,7 +71,7 @@ public class NegocioConsultaTest {
 		paciente.setCpf("222.222.222-22");
 		Calendar datePaciente = Calendar.getInstance();
 		datePaciente.set(1991, Calendar.AUGUST, 02);
-		paciente.setDtNascimento(datePaciente);
+		paciente.setDtNascimento(datePaciente.getTime());
 		paciente.setEmail("igor@gmail.com");
 		paciente.getEndereco().setLogradouro("rua 01");
 		paciente.getEndereco().setNumero("132");
@@ -91,7 +91,7 @@ public class NegocioConsultaTest {
 		secretaria.setCpf("333.333.333-33");
 		Calendar dateSecretaria = Calendar.getInstance();
 		dateSecretaria.set(1991, Calendar.AUGUST, 02);
-		secretaria.setDtNascimento(dateSecretaria);
+		secretaria.setDtNascimento(dateSecretaria.getTime());
 		secretaria.setEmail("monica@gmail.com");
 		secretaria.getEndereco().setLogradouro("rua 01");
 		secretaria.getEndereco().setNumero("132");
@@ -109,7 +109,7 @@ public class NegocioConsultaTest {
 		consulta.setEstado(EstadoConsulta.MARCADA);
 		Calendar dateConsulta = Calendar.getInstance();
 		dateConsulta.set(2017, Calendar.OCTOBER, 23, 19, 23);
-		consulta.setHorario(dateConsulta);
+		consulta.setHorario(dateConsulta.getTime());
 		consulta.setObservacoes("Paciente com urgencia");
 		consulta.setMedico(medico);
 		consulta.setPaciente(paciente);

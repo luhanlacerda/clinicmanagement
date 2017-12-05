@@ -44,9 +44,9 @@ public class NegocioMedico implements INegocioMedico {
 				throw new Exception("Caracteres acima do permitido para o Nome");
 			}
 			
-			if (!EmailValidator.getInstance().isValid(medico.getEmail())) {
+			/*if (!EmailValidator.getInstance().isValid(medico.getEmail())) {
 				throw new Exception("E-Mail inválido");
-			}
+			}*/
 		
 			if (medico.getCpf().trim().equals("   .   .   -  ")) {
 				throw new Exception("Informar CPF");
@@ -68,9 +68,9 @@ public class NegocioMedico implements INegocioMedico {
 				throw new Exception("Caracteres acima do permitido para o RG");
 			}
 
-			if (!ValidatorUtils.validate(medico.getDtNascimento())) {
+			/*if (!ValidatorUtils.validate(medico.getDtNascimento())) {
 				throw new Exception("Data de Nascimento inválida");
-			}
+			}*/
 
 			if (medico.getEndereco().getLogradouro().isEmpty()) {
 				throw new Exception("Informar Logradouro");
@@ -165,9 +165,9 @@ public class NegocioMedico implements INegocioMedico {
 				throw new Exception("Caracteres acima do permitido para o Nome");
 			}
 			
-			if (!EmailValidator.getInstance().isValid(medico.getEmail())) {
+			/*if (!EmailValidator.getInstance().isValid(medico.getEmail())) {
 				throw new Exception("E-Mail inválido");
-			}
+			}*/
 			
 			if (medico.getCpf().trim().equals("   .   .   -  ")) {
 				throw new Exception("Informar CPF");
@@ -189,9 +189,9 @@ public class NegocioMedico implements INegocioMedico {
 				throw new Exception("Caracteres acima do permitido para o RG");
 			}
 			
-			if (!ValidatorUtils.validate(medico.getDtNascimento())) {
+			/*if (!ValidatorUtils.validate(medico.getDtNascimento())) {
 				throw new Exception("Data de Nascimento inválida");
-			}
+			}*/
 			
 			if (medico.getEndereco().getLogradouro().isEmpty()) {
 				throw new Exception("Informar Logradouro");
@@ -319,9 +319,9 @@ public class NegocioMedico implements INegocioMedico {
 				throw new Exception("Caracteres acima do permitido para o Nome");
 			}
 			
-			if (!EmailValidator.getInstance().isValid(medico.getEmail())) {
+			/*if (!EmailValidator.getInstance().isValid(medico.getEmail())) {
 				throw new Exception("E-Mail inválido");
-			}
+			}*/
 			
 			if (medico.getCpf().trim().equals("   .   .   -  ")) {
 				throw new Exception("Informar CPF");
@@ -343,9 +343,9 @@ public class NegocioMedico implements INegocioMedico {
 				throw new Exception("Caracteres acima do permitido para o RG");
 			}
 			
-			if (!ValidatorUtils.validate(medico.getDtNascimento())) {
+			/*if (!ValidatorUtils.validate(medico.getDtNascimento())) {
 				throw new Exception("Data de Nascimento inválida");
-			}
+			}*/
 			
 			if (medico.getEndereco().getLogradouro().isEmpty()) {
 				throw new Exception("Informar Logradouro");
@@ -447,6 +447,12 @@ public class NegocioMedico implements INegocioMedico {
 	@Override
 	public Medico searchByConsulta(Consulta filtro) {
 		return medicoDAO.searchByConsulta(filtro);
+	}
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	public <T> List<T> getAll(Class<T> classType) {
+		return (List<T>) medicoDAO.getAll();
 	}
 
 }

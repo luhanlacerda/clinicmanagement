@@ -32,10 +32,6 @@ public class NegocioEspecialidade implements INegocioEspecialidade {
 				throw new Exception("Caracteres acima do permitido para descri��o de especialidade.");
 			}
 
-			if (especialidade.getId() < 1) {
-				throw new Exception("Id especialidade inexistente. Informe um Id maior que 1.");
-			}
-
 			especialidadeDAO.insert(especialidade);
 		} catch (Exception ex) {
 			ex.printStackTrace();
@@ -128,4 +124,10 @@ public class NegocioEspecialidade implements INegocioEspecialidade {
 		return especialidadeDAO.getAllByMedicos(filtro);
 	}
 
+	@SuppressWarnings("unchecked")
+	@Override
+	public <T> List<T> getAll(Class<T> classType) {
+		return (List<T>) especialidadeDAO.getAll();
+	}
+	
 }

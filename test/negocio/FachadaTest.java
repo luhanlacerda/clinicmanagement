@@ -9,7 +9,7 @@ import negocios.Fachada;
 
 public class FachadaTest {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Exception {
 		Fachada fachada = new Fachada();
 
 		Convenio convenio1 = new Convenio();

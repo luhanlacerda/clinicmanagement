@@ -23,8 +23,8 @@ public class NegocioConsulta implements INegocioConsulta {
 	private DAOConsulta consultaDAO = DAOFactory.getConsultaDAO();
 
 	@Override
-	public void insert(Consulta consulta) {
-		try {
+	public void insert(Consulta consulta) throws Exception {
+		
 			if (consulta.getDuracao() < 1) {
 				throw new Exception(ERRO_DURACAO);
 			}
@@ -45,19 +45,15 @@ public class NegocioConsulta implements INegocioConsulta {
 				throw new Exception(ERRO_SECRETARIA);
 			}
 
-			if (!ValidatorUtils.validate(consulta.getHorario())) {
+			/*if (!ValidatorUtils.validate(consulta.getHorario())) {
 				throw new Exception(ERRO_HORARIO);
-			}
+			}*/
 			
 			consultaDAO.insert(consulta);
-		} catch (Exception ex) {
-			ex.printStackTrace();
-		}
 	}
 
 	@Override
-	public void update(Consulta consulta) {
-		try {
+	public void update(Consulta consulta) throws Exception {
 			if (consulta.getDuracao() < 1) {
 				throw new Exception(ERRO_DURACAO);
 			}
@@ -78,26 +74,19 @@ public class NegocioConsulta implements INegocioConsulta {
 				throw new Exception(ERRO_SECRETARIA);
 			}
 			
-			if (!ValidatorUtils.validate(consulta.getHorario())) {
+			/*if (!ValidatorUtils.validate(consulta.getHorario())) {
 				throw new Exception(ERRO_HORARIO);
-			}
+			}*/
 			
 			consultaDAO.insert(consulta);
-		} catch (Exception ex) {
-			ex.printStackTrace();
-		}
 	}
 
 	@Override
-	public void remove(Consulta consulta) {
-		try {
+	public void remove(Consulta consulta) throws Exception {
 			if (consulta.getId() < 0) {
 				throw new Exception(ERRO_NUMERO);
 			}
 			consultaDAO.remove(consulta);
-		} catch (Exception ex) {
-			ex.printStackTrace();
-		}
 	}
 
 	@SuppressWarnings("unchecked")
@@ -108,21 +97,16 @@ public class NegocioConsulta implements INegocioConsulta {
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public <T> T searchByKey(Serializable chave, Class<T> classType) {
-		try {
+	public <T> T searchByKey(Serializable chave, Class<T> classType) throws Exception {
 			if (chave.equals(null)) {
 				throw new Exception("Id inválido");
 			}
-		} catch (Exception ex) {
-			ex.printStackTrace();
-		}
 		
 		return (T) consultaDAO.searchByKey(chave);
 	}
 
 	@Override
-	public void refresh(Consulta consulta) {
-		try {
+	public void refresh(Consulta consulta) throws Exception {
 			if (consulta.getDuracao() < 1) {
 				throw new Exception(ERRO_DURACAO);
 			}
@@ -143,34 +127,37 @@ public class NegocioConsulta implements INegocioConsulta {
 				throw new Exception(ERRO_SECRETARIA);
 			}
 
-			if (!ValidatorUtils.validate(consulta.getHorario())) {
+			/*if (!ValidatorUtils.validate(consulta.getHorario())) {
 				throw new Exception(ERRO_HORARIO);
-			}
+			}*/
 			
 			consultaDAO.refresh(consulta);
-		} catch (Exception ex) {
-			ex.printStackTrace();
-		}
 	}
 
 	@Override
-	public List<Consulta> getAllByCRM(Consulta filtro) {
+	public List<Consulta> getAllByCRM(Consulta filtro) throws Exception {
 		return consultaDAO.getAllByCRM(filtro);
 	}
 
 	@Override
-	public List<Consulta> getAllByMedico(Consulta filtro) {
+	public List<Consulta> getAllByMedico(Consulta filtro) throws Exception {
 		return consultaDAO.getAllByMedico(filtro);
 	}
 
 	@Override
-	public List<Consulta> getAllBySecretria(Consulta filtro) {
+	public List<Consulta> getAllBySecretria(Consulta filtro) throws Exception {
 		return consultaDAO.getAllBySecretria(filtro);
 	}
 
 	@Override
-	public List<Consulta> getAllByPaciente(Consulta filtro) {
+	public List<Consulta> getAllByPaciente(Consulta filtro) throws Exception {
 		return consultaDAO.getAllByPaciente(filtro);
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public <T> List<T> getAll(Class<T> classType) throws Exception {
+		return (List<T>) consultaDAO.getAll();
 	}
 
 }

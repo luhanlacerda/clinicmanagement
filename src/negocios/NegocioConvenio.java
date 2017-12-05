@@ -17,7 +17,7 @@ public class NegocioConvenio implements INegocioConvenio {
 	private DAOConvenio convenioDAO = DAOFactory.getConvenioDAO();
 
 	@Override
-	public void insert(Convenio convenio) {
+	public void insert(Convenio convenio) throws Exception {
 		try {
 			if (convenio.getDescricao().isEmpty()) {
 				throw new Exception("Informar a Descri��o");
@@ -34,7 +34,7 @@ public class NegocioConvenio implements INegocioConvenio {
 	}
 
 	@Override
-	public void update(Convenio convenio) {
+	public void update(Convenio convenio) throws Exception {
 		try {
 			if (convenio.getDescricao().isEmpty()) {
 				throw new Exception("Informar a Descri��o");
@@ -51,7 +51,7 @@ public class NegocioConvenio implements INegocioConvenio {
 	}
 
 	@Override
-	public void remove(Convenio convenio) {
+	public void remove(Convenio convenio) throws Exception {
 		try {
 			if (convenio.getId() < 0) {
 				throw new Exception("Id inv�lido");
@@ -65,13 +65,13 @@ public class NegocioConvenio implements INegocioConvenio {
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public <T> void insertCollection(ArrayList<T> colecao, Class<T> classType) {
+	public <T> void insertCollection(ArrayList<T> colecao, Class<T> classType) throws Exception {
 		convenioDAO.insertCollection((Collection<Convenio>) colecao);
 	}
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public <T> T searchByKey(Serializable chave, Class<T> classType) {
+	public <T> T searchByKey(Serializable chave, Class<T> classType) throws Exception {
 		try {
 			if (chave.equals(null)) {
 				throw new Exception("Id inv�lido");
@@ -84,7 +84,7 @@ public class NegocioConvenio implements INegocioConvenio {
 	}
 
 	@Override
-	public void refresh(Convenio convenio) {
+	public void refresh(Convenio convenio) throws Exception {
 		try {
 			if (convenio.getDescricao().isEmpty()) {
 				throw new Exception("Informar a Descri��o");
@@ -101,8 +101,14 @@ public class NegocioConvenio implements INegocioConvenio {
 	}
 
 	@Override
-	public List<Convenio> getAllByDescricao(Convenio filtro) {
+	public List<Convenio> getAllByDescricao(Convenio filtro) throws Exception {
 		return convenioDAO.getAllByDescricao(filtro);
+	}
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	public <T> List<T> getAll(Class<T> classType) throws Exception {
+		return (List<T>) convenioDAO.getAll();
 	}
 
 }
