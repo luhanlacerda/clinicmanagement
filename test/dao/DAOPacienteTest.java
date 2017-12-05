@@ -18,7 +18,7 @@ public class DAOPacienteTest {
 		paciente.setCpf("111.111.111-11");
 		Calendar datePaciente = Calendar.getInstance();
 		datePaciente.set(1991, Calendar.AUGUST, 02);
-		paciente.setDtNascimento(datePaciente);
+		paciente.setDtNascimento(datePaciente.getTime());
 		paciente.setEmail("marcos@gmail.com");
 		paciente.getEndereco().setLogradouro("rua 01");
 		paciente.getEndereco().setNumero("132");

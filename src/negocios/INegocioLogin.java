@@ -8,7 +8,7 @@ public interface INegocioLogin {
 
 	public void update(Login login) throws Exception;
 
-	public void refresh(Login login);
+	public void refresh(Login login) throws Exception;
 	
 	public Login login(Login login) throws Exception;
 	

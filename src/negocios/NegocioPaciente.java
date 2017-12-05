@@ -43,9 +43,9 @@ public class NegocioPaciente implements INegocioPaciente {
 				throw new Exception("Caracteres acima do permitido para o Nome");
 			}
 			
-			if (!EmailValidator.getInstance().isValid(paciente.getEmail())) {
+			/*if (!EmailValidator.getInstance().isValid(paciente.getEmail())) {
 				throw new Exception("E-Mail inv�lido");
-			}
+			}*/
 			
 			if (paciente.getCpf().trim().equals("   .   .   -  ")) {
 				throw new Exception("Informar CPF");
@@ -63,9 +63,9 @@ public class NegocioPaciente implements INegocioPaciente {
 				throw new Exception("Caracteres acima do permitido para o RG");
 			}
 			
-			if (!ValidatorUtils.validate(paciente.getDtNascimento())) {
+			/*if (!ValidatorUtils.validate(paciente.getDtNascimento())) {
 				throw new Exception("Data de Nascimento inv�lida");
-			}
+			}*/
 			
 			if (paciente.getEndereco().getLogradouro().isEmpty()) {
 				throw new Exception("Informar Logradouro");
@@ -161,9 +161,9 @@ public class NegocioPaciente implements INegocioPaciente {
 				throw new Exception("Caracteres acima do permitido para o Nome");
 			}
 			
-			if (!EmailValidator.getInstance().isValid(paciente.getEmail())) {
+			/*if (!EmailValidator.getInstance().isValid(paciente.getEmail())) {
 				throw new Exception("E-Mail inv�lido");
-			}
+			}*/
 			
 			if (paciente.getCpf().trim().equals("   .   .   -  ")) {
 				throw new Exception("Informar  CPF");
@@ -181,9 +181,9 @@ public class NegocioPaciente implements INegocioPaciente {
 				throw new Exception("Caracteres acima do permitido para o RG");
 			}
 			
-			if (!ValidatorUtils.validate(paciente.getDtNascimento())) {
+			/*if (!ValidatorUtils.validate(paciente.getDtNascimento())) {
 				throw new Exception("Data de Nascimento inv�lida");
-			}
+			}*/
 			
 			if (paciente.getEndereco().getLogradouro().isEmpty()) {
 				throw new Exception("Informar Logradouro");
@@ -420,6 +420,12 @@ public class NegocioPaciente implements INegocioPaciente {
 	@Override
 	public List<Paciente> getAllByName(Paciente filtro) {
 		return pacienteDAO.getAllByName(filtro);
+	}
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	public <T> List<T> getAll(Class<T> classType) {
+		return (List<T>) pacienteDAO.getAll();
 	}
 
 }

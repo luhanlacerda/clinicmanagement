@@ -9,7 +9,7 @@ import negocios.NegocioMedico;
 
 public class NegocioMedicoTest {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Exception {
 
 		Medico medico = new Medico();
 
@@ -26,7 +26,7 @@ public class NegocioMedicoTest {
 		medico.setCpf("222.223.222-22");
 		Calendar dateMedico = Calendar.getInstance();
 		dateMedico.set(1994, 01, 24);
-		medico.setDtNascimento(dateMedico);
+		medico.setDtNascimento(dateMedico.getTime());
 		medico.setCrm("12435PE");
 		medico.setEstadoCivil(EstadoCivil.SOLTEIRO);
 		medico.setRg("2.222.233SDS/PE");
@@ -36,7 +36,7 @@ public class NegocioMedicoTest {
 
 		//negocioMedico.insert(medico);
 		medico = negocioMedico.searchByKey(2, Medico.class);
-		negocioMedico.remove(medico);
+		//negocioMedico.remove(medico);
 	}
 
 }

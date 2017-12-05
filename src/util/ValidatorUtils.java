@@ -1,19 +1,23 @@
 package util;
 
-import java.util.Calendar;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class ValidatorUtils {
 
 	private ValidatorUtils() {
 	}
 	
-	public static boolean validate(Calendar value) {
-		value.setLenient(false); // Not allow invalid dates
-		
+	public static boolean validate(Date value) {
+		SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+		String dateToValidate = formatter.format(value);
+		formatter.setLenient(false);
+
 		try {
-			value.getTime(); // If date is invalid will generate an exception
+			formatter.parse(dateToValidate);
 			return true;
-		} catch (IllegalArgumentException e) {
+		} catch (IllegalArgumentException | ParseException e) {
 			return false;
 		}
 	}

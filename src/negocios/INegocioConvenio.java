@@ -6,14 +6,14 @@ import classesBasicas.Convenio;
 
 public interface INegocioConvenio extends INegocioGenerico {
 
-	public void insert(Convenio convenio);
+	public void insert(Convenio convenio) throws Exception;
 
-	public void update(Convenio convenio);
+	public void update(Convenio convenio) throws Exception;
 
-	public void remove(Convenio convenio);
+	public void remove(Convenio convenio) throws Exception;
 
-	public void refresh(Convenio convenio);
+	public void refresh(Convenio convenio) throws Exception;
 
-	public List<Convenio> getAllByDescricao(Convenio filtro);
+	public List<Convenio> getAllByDescricao(Convenio filtro) throws Exception;
 
 }

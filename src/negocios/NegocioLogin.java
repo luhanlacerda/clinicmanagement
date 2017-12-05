@@ -35,7 +35,7 @@ public class NegocioLogin implements INegocioLogin {
 	}
 
 	@Override
-	public void refresh(Login login) {
+	public void refresh(Login login) throws Exception {
 		usuarioLoginDAO.refresh(login);
 	}
 

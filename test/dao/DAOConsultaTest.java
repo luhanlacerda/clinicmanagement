@@ -32,7 +32,7 @@ public class DAOConsultaTest {
 		medico.setCrm("CRM01PE");
 		Calendar dateMedico = Calendar.getInstance();
 		dateMedico.set(1991, Calendar.AUGUST, 02);
-		medico.setDtNascimento(dateMedico);
+		medico.setDtNascimento(dateMedico.getTime());
 		medico.setEmail("wilson@gmail.com");
 		medico.getEndereco().setLogradouro("rua 01");
 		medico.getEndereco().setNumero("132");
@@ -59,7 +59,7 @@ public class DAOConsultaTest {
 		secretaria.setCpf("222.222.222-22");
 		Calendar dateSecretaria = Calendar.getInstance();
 		dateSecretaria.set(1994, Calendar.JANUARY, 24);
-		secretaria.setDtNascimento(dateSecretaria);
+		secretaria.setDtNascimento(dateSecretaria.getTime());
 		secretaria.setEstadoCivil(EstadoCivil.SOLTEIRO);
 		secretaria.setRg("2.222.222SDS/PE");
 		secretaria.setContato("2423-2221");
@@ -77,7 +77,7 @@ public class DAOConsultaTest {
 		paciente.setCpf("333.333.333-33");
 		Calendar datePaciente = Calendar.getInstance();
 		datePaciente.set(1994, Calendar.JANUARY, 24);
-		paciente.setDtNascimento(datePaciente);
+		paciente.setDtNascimento(datePaciente.getTime());
 		paciente.setEstadoCivil(EstadoCivil.CASADO);
 		paciente.setRg("3.333.333SDS/PE");
 		paciente.setContato("3030-2020");
@@ -86,7 +86,7 @@ public class DAOConsultaTest {
 		consulta.setDuracao(01);
 		Calendar dateConsulta = Calendar.getInstance();
 		dateConsulta.set(2017, Calendar.OCTOBER, 17, 12, 30);
-		consulta.setHorario(dateConsulta);
+		consulta.setHorario(dateConsulta.getTime());
 		consulta.setMedico(medico);
 		consulta.setObservacoes(null);
 		consulta.setPaciente(paciente);

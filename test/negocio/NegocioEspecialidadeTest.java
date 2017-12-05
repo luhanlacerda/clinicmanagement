@@ -5,7 +5,7 @@ import negocios.INegocioEspecialidade;
 import negocios.NegocioEspecialidade;
 
 public class NegocioEspecialidadeTest {
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Exception {
 		Especialidade especialidade = new Especialidade();
 
 		especialidade.setDescricao("Ortopedista");

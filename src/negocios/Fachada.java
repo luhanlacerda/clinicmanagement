@@ -34,7 +34,7 @@ public class Fachada implements INegocioConsulta, INegocioConvenio, INegocioEspe
 	}
 
 	@Override
-	public <T> void insertCollection(ArrayList<T> colecao, Class<T> classType) {
+	public <T> void insertCollection(ArrayList<T> colecao, Class<T> classType) throws Exception {
 		if (classType == Consulta.class)
 			negocioConsulta.insertCollection(colecao, classType);
 		else if (classType == Convenio.class)
@@ -52,7 +52,7 @@ public class Fachada implements INegocioConsulta, INegocioConvenio, INegocioEspe
 	}
 
 	@Override
-	public <T> T searchByKey(Serializable chave, Class<T> classType) {
+	public <T> T searchByKey(Serializable chave, Class<T> classType) throws Exception {
 		if (classType == Consulta.class)
 			return negocioConsulta.searchByKey(chave, classType);
 		else if (classType == Convenio.class)
@@ -68,189 +68,208 @@ public class Fachada implements INegocioConsulta, INegocioConvenio, INegocioEspe
 		else
 			throw new UnsupportedOperationException();
 	}
+	
+	@Override
+	public <T> List<T> getAll(Class<T> classType) throws Exception {
+		if (classType == Consulta.class)
+			return negocioConsulta.getAll(classType);
+		else if (classType == Convenio.class)
+			return negocioConvenio.getAll(classType);
+		else if (classType == Especialidade.class)
+			return negocioEspecialidade.getAll(classType);
+		else if (classType == Medico.class)
+			return negocioMedico.getAll(classType);
+		else if (classType == Paciente.class)
+			return negocioPaciente.getAll(classType);
+		else if (classType == Secretaria.class)
+			return negocioSecretaria.getAll(classType);
+		else
+			throw new UnsupportedOperationException();
+	}
+
 
 	@Override
-	public void insert(Secretaria secretaria) {
+	public void insert(Secretaria secretaria) throws Exception {
 		negocioSecretaria.insert(secretaria);
 	}
 
 	@Override
-	public void update(Secretaria secretaria) {
+	public void update(Secretaria secretaria) throws Exception {
 		negocioSecretaria.update(secretaria);
 	}
 
 	@Override
-	public void remove(Secretaria secretaria) {
+	public void remove(Secretaria secretaria) throws Exception {
 		negocioSecretaria.remove(secretaria);
 	}
 
 	@Override
-	public void refresh(Secretaria secretaria) {
+	public void refresh(Secretaria secretaria) throws Exception {
 		negocioSecretaria.refresh(secretaria);
 	}
 
 	@Override
-	public List<Secretaria> getAllByName(Secretaria filtro) {
+	public List<Secretaria> getAllByName(Secretaria filtro) throws Exception {
 		return negocioSecretaria.getAllByName(filtro);
 	}
 
 	@Override
-	public void insert(Paciente paciente) {
+	public void insert(Paciente paciente) throws Exception {
 		negocioPaciente.insert(paciente);
 	}
 
 	@Override
-	public void update(Paciente paciente) {
+	public void update(Paciente paciente) throws Exception {
 		negocioPaciente.update(paciente);
 	}
 
 	@Override
-	public void remove(Paciente paciente) {
+	public void remove(Paciente paciente) throws Exception {
 		negocioPaciente.remove(paciente);
 	}
 
 	@Override
-	public void refresh(Paciente paciente) {
+	public void refresh(Paciente paciente) throws Exception {
 		negocioPaciente.refresh(paciente);
 	}
 
 	@Override
-	public List<Paciente> getAllByName(Paciente filtro) {
+	public List<Paciente> getAllByName(Paciente filtro) throws Exception {
 		return negocioPaciente.getAllByName(filtro);
 	}
 
 	@Override
-	public void insert(Medico medico) {
+	public void insert(Medico medico) throws Exception {
 		negocioMedico.insert(medico);
 	}
 
 	@Override
-	public void update(Medico medico) {
+	public void update(Medico medico) throws Exception {
 		negocioMedico.update(medico);
 	}
 
 	@Override
-	public void remove(Medico medico) {
+	public void remove(Medico medico) throws Exception {
 		negocioMedico.remove(medico);
 	}
 
 	@Override
-	public void refresh(Medico medico) {
+	public void refresh(Medico medico) throws Exception {
 		negocioMedico.refresh(medico);
 	}
 
 	@Override
-	public List<Medico> getAllByName(Medico filtro) {
+	public List<Medico> getAllByName(Medico filtro) throws Exception {
 		return negocioMedico.getAllByName(filtro);
 	}
 
 	@Override
-	public List<Medico> getAllByEspecialidade(Especialidade filtro) {
+	public List<Medico> getAllByEspecialidade(Especialidade filtro) throws Exception {
 		return negocioMedico.getAllByEspecialidade(filtro);
 	}
 
 	@Override
-	public Medico searchByCrm(Medico filtro) {
+	public Medico searchByCrm(Medico filtro) throws Exception {
 		return negocioMedico.searchByCrm(filtro);
 	}
 
 	@Override
-	public Medico searchByConsulta(Consulta filtro) {
+	public Medico searchByConsulta(Consulta filtro) throws Exception {
 		return negocioMedico.searchByConsulta(filtro);
 	}
 
 	@Override
-	public void insert(Especialidade especialidade) {
+	public void insert(Especialidade especialidade) throws Exception {
 		negocioEspecialidade.insert(especialidade);
 	}
 
 	@Override
-	public void update(Especialidade especialidade) {
+	public void update(Especialidade especialidade) throws Exception {
 		negocioEspecialidade.update(especialidade);
 	}
 
 	@Override
-	public void remove(Especialidade especialidade) {
+	public void remove(Especialidade especialidade) throws Exception {
 		negocioEspecialidade.remove(especialidade);
 	}
 
 	@Override
-	public void refresh(Especialidade especialidade) {
+	public void refresh(Especialidade especialidade) throws Exception {
 		negocioEspecialidade.refresh(especialidade);
 	}
 
 	@Override
-	public List<Especialidade> getAllByDescricao(Especialidade filtro) {
+	public List<Especialidade> getAllByDescricao(Especialidade filtro) throws Exception {
 		return negocioEspecialidade.getAllByDescricao(filtro);
 	}
 
 	@Override
-	public List<Especialidade> getAllByEspecialidade(Medico filtro) {
+	public List<Especialidade> getAllByEspecialidade(Medico filtro) throws Exception {
 		return negocioEspecialidade.getAllByEspecialidade(filtro);
 	}
 
 	@Override
-	public void insert(Convenio convenio) {
+	public void insert(Convenio convenio) throws Exception {
 		negocioConvenio.insert(convenio);
 	}
 
 	@Override
-	public void update(Convenio convenio) {
+	public void update(Convenio convenio) throws Exception {
 		negocioConvenio.update(convenio);
 	}
 
 	@Override
-	public void remove(Convenio convenio) {
+	public void remove(Convenio convenio) throws Exception {
 		negocioConvenio.remove(convenio);
 	}
 
 	@Override
-	public void refresh(Convenio convenio) {
+	public void refresh(Convenio convenio) throws Exception {
 		negocioConvenio.refresh(convenio);
 	}
 
 	@Override
-	public List<Convenio> getAllByDescricao(Convenio filtro) {
+	public List<Convenio> getAllByDescricao(Convenio filtro) throws Exception {
 		return negocioConvenio.getAllByDescricao(filtro);
 	}
 
 	@Override
-	public void insert(Consulta consulta) {
+	public void insert(Consulta consulta) throws Exception {
 		negocioConsulta.insert(consulta);
 	}
 
 	@Override
-	public void update(Consulta consulta) {
+	public void update(Consulta consulta) throws Exception {
 		negocioConsulta.update(consulta);
 	}
 
 	@Override
-	public void remove(Consulta consulta) {
+	public void remove(Consulta consulta) throws Exception {
 		negocioConsulta.remove(consulta);
 	}
 
 	@Override
-	public void refresh(Consulta consulta) {
+	public void refresh(Consulta consulta) throws Exception {
 		negocioConsulta.refresh(consulta);
 	}
 
 	@Override
-	public List<Consulta> getAllByCRM(Consulta filtro) {
+	public List<Consulta> getAllByCRM(Consulta filtro) throws Exception {
 		return negocioConsulta.getAllByCRM(filtro);
 	}
 
 	@Override
-	public List<Consulta> getAllByMedico(Consulta filtro) {
+	public List<Consulta> getAllByMedico(Consulta filtro) throws Exception {
 		return negocioConsulta.getAllByMedico(filtro);
 	}
 
 	@Override
-	public List<Consulta> getAllBySecretria(Consulta filtro) {
+	public List<Consulta> getAllBySecretria(Consulta filtro) throws Exception {
 		return negocioConsulta.getAllBySecretria(filtro);
 	}
 
 	@Override
-	public List<Consulta> getAllByPaciente(Consulta filtro) {
+	public List<Consulta> getAllByPaciente(Consulta filtro) throws Exception {
 		return negocioConsulta.getAllByPaciente(filtro);
 	}
 
@@ -265,7 +284,7 @@ public class Fachada implements INegocioConsulta, INegocioConvenio, INegocioEspe
 	}
 
 	@Override
-	public void refresh(Login login) {
+	public void refresh(Login login) throws Exception {
 		negocioLogin.refresh(login);
 	}
 
@@ -273,5 +292,5 @@ public class Fachada implements INegocioConsulta, INegocioConvenio, INegocioEspe
 	public Login login(Login login) throws Exception {
 		return negocioLogin.login(login);
 	}
-
+	
 }

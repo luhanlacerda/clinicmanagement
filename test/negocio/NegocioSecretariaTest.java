@@ -9,7 +9,7 @@ import negocios.NegocioSecretaria;
 
 public class NegocioSecretariaTest {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Exception {
 
 		Secretaria secretaria = new Secretaria();
 
@@ -26,7 +26,7 @@ public class NegocioSecretariaTest {
 		secretaria.setCpf("222.222.222-22");
 		Calendar dateSecretaria = Calendar.getInstance();
 		dateSecretaria.set(1994, 01, 24);
-		secretaria.setDtNascimento(dateSecretaria);
+		secretaria.setDtNascimento(dateSecretaria.getTime());
 		secretaria.setEstadoCivil(EstadoCivil.SOLTEIRO);
 		secretaria.setRg("2.222.222SDS/PE");
 		secretaria.setContato("2423-2221");

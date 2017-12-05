@@ -9,7 +9,7 @@ import negocios.NegocioPaciente;
 
 public class NegocioPacienteTest {
 	
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Exception {
 		
 		Paciente paciente = new Paciente();
 		
@@ -19,15 +19,15 @@ public class NegocioPacienteTest {
 		paciente.getEndereco().setLogradouro("Rua Juju");
 		paciente.getEndereco().setNumero("334");
 		paciente.getEndereco().setComplemento("Apto 2002");
-		paciente.getEndereco().setBairro("Graças KKKKK");
+		paciente.getEndereco().setBairro("Graï¿½as KKKKK");
 		paciente.getEndereco().setCep("33333-444");
-		paciente.getEndereco().setCidade("João Pessoa");
+		paciente.getEndereco().setCidade("Joï¿½o Pessoa");
 		paciente.getEndereco().setUf("PA");
 		paciente.getEndereco().setPais("Brasil");
 		
 		Calendar datePaciente = Calendar.getInstance();
 		datePaciente.set(1956, 3, 23);
-		paciente.setDtNascimento(datePaciente);
+		paciente.setDtNascimento(datePaciente.getTime());
 		
 		paciente.setCpf("333.333.333-44");
 		paciente.setEstadoCivil(EstadoCivil.DIVORCIADO);

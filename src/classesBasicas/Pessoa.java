@@ -1,6 +1,6 @@
 package classesBasicas;
 
-import java.util.Calendar;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Embedded;
@@ -38,7 +38,7 @@ public class Pessoa {
 	@Column(nullable = false)
 	private String contato;
 	@Temporal(TemporalType.DATE)
-	private Calendar dtNascimento;
+	private Date dtNascimento;
 	@Column(unique = true, nullable = false)
 	private String email;
 	@Column(nullable = false)
@@ -97,11 +97,11 @@ public class Pessoa {
 		this.contato = contato;
 	}
 
-	public Calendar getDtNascimento() {
+	public Date getDtNascimento() {
 		return dtNascimento;
 	}
 
-	public void setDtNascimento(Calendar dtNascimento) {
+	public void setDtNascimento(Date dtNascimento) {
 		this.dtNascimento = dtNascimento;
 	}
 

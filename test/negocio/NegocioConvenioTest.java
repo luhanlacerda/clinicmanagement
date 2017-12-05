@@ -6,7 +6,7 @@ import negocios.NegocioConvenio;
 
 public class NegocioConvenioTest {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Exception {
 
 		Convenio convenio = new Convenio();
 

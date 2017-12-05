@@ -8,20 +8,20 @@ import classesBasicas.Medico;
 
 public interface INegocioMedico extends INegocioGenerico {
 
-	public void insert(Medico medico);
+	public void insert(Medico medico) throws Exception;
 
-	public void update(Medico medico);
+	public void update(Medico medico) throws Exception;
 
-	public void remove(Medico medico);
+	public void remove(Medico medico) throws Exception;
 
-	public void refresh(Medico medico);
+	public void refresh(Medico medico) throws Exception;
 
-	public List<Medico> getAllByName(Medico filtro);
+	public List<Medico> getAllByName(Medico filtro) throws Exception;
 	
-	public List<Medico> getAllByEspecialidade(Especialidade filtro);
+	public List<Medico> getAllByEspecialidade(Especialidade filtro) throws Exception;
 	
-	public Medico searchByCrm(Medico filtro);
+	public Medico searchByCrm(Medico filtro) throws Exception;
 	
-	public Medico searchByConsulta(Consulta filtro);
+	public Medico searchByConsulta(Consulta filtro) throws Exception;
 
 }

@@ -1,6 +1,6 @@
 package classesBasicas;
 
-import java.util.Calendar;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -29,7 +29,7 @@ public class Consulta {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	@Temporal(TemporalType.TIMESTAMP)
-	private Calendar horario;
+	private Date horario;
 	@Column(nullable = false)
 	private int duracao;
 	private String observacoes;
@@ -61,11 +61,11 @@ public class Consulta {
 		return id;
 	}
 
-	public Calendar getHorario() {
+	public Date getHorario() {
 		return horario;
 	}
 
-	public void setHorario(Calendar horario) {
+	public void setHorario(Date horario) {
 		this.horario = horario;
 	}
 
