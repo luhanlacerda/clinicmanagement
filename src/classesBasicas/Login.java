@@ -1,5 +1,7 @@
 package classesBasicas;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,7 +13,9 @@ import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CascadeType;
 
 @Entity
-public class Login {
+public class Login implements Serializable {
+
+	private static final long serialVersionUID = 1908819623113035565L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -16,6 +16,8 @@ import org.hibernate.annotations.FetchMode;
 @Entity
 public class Paciente extends Pessoa {
 
+	private static final long serialVersionUID = 3205641184520039929L;
+
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "id_convenio", insertable = true, updatable = true)
 	@Fetch(FetchMode.JOIN)

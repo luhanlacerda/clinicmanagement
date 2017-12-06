@@ -1,5 +1,6 @@
 package classesBasicas;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -14,8 +15,10 @@ import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CascadeType;
 
 @Entity
-public class Especialidade {
+public class Especialidade implements Serializable {
 
+	private static final long serialVersionUID = -2043446774337814058L;
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
