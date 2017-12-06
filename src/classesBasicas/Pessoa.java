@@ -1,5 +1,6 @@
 package classesBasicas;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -22,8 +23,10 @@ import classesBasicas.incorporada.EstadoCivil;
 
 @Entity
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
-public class Pessoa {
+public class Pessoa implements Serializable {
 
+	private static final long serialVersionUID = -7633183637193253544L;
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.TABLE)
 	private int id;

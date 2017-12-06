@@ -1,6 +1,8 @@
 package classesBasicas.incorporada;
 
-public enum EstadoConsulta {
+import java.io.Serializable;
+
+public enum EstadoConsulta implements Serializable {
 	MARCADA("Marcada"), CANCELADA("Cancelada"), FINALIZADA("Finalizada");
 	
 	private String label;

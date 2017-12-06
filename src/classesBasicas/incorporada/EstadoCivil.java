@@ -1,6 +1,8 @@
 package classesBasicas.incorporada;
 
-public enum EstadoCivil {
+import java.io.Serializable;
+
+public enum EstadoCivil implements Serializable {
 	SOLTEIRO("Solteiro"), CASADO("Casado"), DIVORCIADO("Divorciado"), VIUVO("Viuvo");
 	
 	private String label;

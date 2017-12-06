@@ -1,11 +1,15 @@
 package classesBasicas.incorporada;
 
+import java.io.Serializable;
+
 import javax.persistence.Embeddable;
 
 @Embeddable
-public class Endereco {
+public class Endereco implements Serializable {
 
-    private String logradouro;
+	private static final long serialVersionUID = -5976767843891484736L;
+	
+	private String logradouro;
     private String numero;
     private String complemento;
     private String bairro;

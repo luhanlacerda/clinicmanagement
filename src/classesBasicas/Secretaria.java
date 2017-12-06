@@ -12,6 +12,8 @@ import org.hibernate.annotations.CascadeType;
 @Entity
 public class Secretaria extends Pessoa {
 
+	private static final long serialVersionUID = 2451998522714655316L;
+	
 	@OneToMany(mappedBy = "secretaria", fetch = FetchType.LAZY)
 	@Cascade(CascadeType.ALL)
 	private List<Consulta> listaConsultas;
