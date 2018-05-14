@@ -17,6 +17,8 @@ import org.hibernate.annotations.FetchMode;
 @Entity
 public class Medico extends Pessoa {
 
+	private static final long serialVersionUID = -4616811050338469613L;
+
 	@Column(unique = true, nullable = false)
 	private String crm;
 

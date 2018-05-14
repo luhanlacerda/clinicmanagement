@@ -1,5 +1,6 @@
 package classesBasicas;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -23,8 +24,10 @@ import org.hibernate.annotations.FetchMode;
 import classesBasicas.incorporada.EstadoConsulta;
 
 @Entity
-public class Consulta {
+public class Consulta implements Serializable {
 
+	private static final long serialVersionUID = -225089811084520927L;
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
