@@ -39,24 +39,17 @@ public class NegocioEspecialidade implements INegocioEspecialidade {
 	}
 
 	@Override
-	public void update(Especialidade especialidade) {
-		try {
+	public void update(Especialidade especialidade) throws Exception {
 
-			if (especialidade.getDescricao().trim().isEmpty()) {
+			if (especialidade != null && especialidade.getDescricao().trim().isEmpty()) {
 				throw new Exception("Campo descri��o especialidade vazio. Por favor, informe a descri��o.");
 			}
 
 			if (especialidade.getDescricao().length() > DESCRICAO_SIZE) {
 				throw new Exception("Caracteres acima do permitido para descri��o de especialidade.");
 			}
-
-			if (especialidade.getDescricao().equals(null)) {
-				throw new Exception("Informar especialidade.");
-			}
-
-		} catch (Exception ex) {
-			ex.printStackTrace();
-		}
+			
+			especialidadeDAO.update(especialidade);
 	}
 
 	@Override
