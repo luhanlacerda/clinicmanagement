@@ -8,7 +8,6 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import classesBasicas.Consulta;
 import classesBasicas.Especialidade;
 import classesBasicas.Medico;
 
