@@ -931,7 +931,7 @@ public class PacienteTest {
 		paciente.getEndereco().setComplemento("Apto 1001");
 		paciente.getEndereco().setBairro("Bairro ");
 		paciente.getEndereco().setCep("12100-213");
-		paciente.getEndereco().setCidade("Cidade Maior que o permitido para inserir no bancoo");
+		paciente.getEndereco().setCidade("Cidade");
 		paciente.getEndereco().setUf("");
 		paciente.getEndereco().setPais("Brasil");
 		paciente.setContato("3333-3333");
@@ -951,7 +951,7 @@ public class PacienteTest {
 		paciente.getEndereco().setComplemento("Apto 1001");
 		paciente.getEndereco().setBairro("Bairro ");
 		paciente.getEndereco().setCep("12100-213");
-		paciente.getEndereco().setCidade("Cidade Maior que o permitido para inserir no bancoo");
+		paciente.getEndereco().setCidade("Cidade");
 		paciente.getEndereco().setUf("PEE");
 		paciente.getEndereco().setPais("Brasil");
 		paciente.setContato("3333-3333");
@@ -1067,6 +1067,509 @@ public class PacienteTest {
 	public void testarRemoverPacienteSemID() throws Exception {
 		paciente.getId();
 		negocioPaciente.remove(paciente);
+	}
+	
+	// REFRESH
+
+	@Test(expected = Exception.class)
+	public void testarRefreshNomeVazio() throws Exception {
+		paciente.setCpf("123.123.123-12");
+		paciente.setRg("123");
+		paciente.getEndereco().setLogradouro("Rua 01");
+		paciente.getEndereco().setNumero("132");
+		paciente.getEndereco().setComplemento("Apto 1001");
+		paciente.getEndereco().setBairro("Boa Viagem");
+		paciente.getEndereco().setCep("12100-213");
+		paciente.getEndereco().setCidade("Recife");
+		paciente.getEndereco().setUf("PE");
+		paciente.getEndereco().setPais("Brasil");
+		paciente.setContato("3333-3333");
+		paciente.setDtNascimento(new SimpleDateFormat("dd/MM/yyyy").parse("26/09/1997"));
+		paciente.setEmail("email@email.com");
+		paciente.setEstadoCivil(EstadoCivil.SOLTEIRO);
+		paciente.setNome("");
+		negocioPaciente.refresh(paciente);
+	}
+
+	@Test(expected = Exception.class)
+	public void testarRefreshNomeMaiorQueEsperado() throws Exception {
+		paciente.setNome(
+				"asasasassasasasdsdsasassasasasasassasasasasassasasasasassasasasasassasasasasassasasasasassasasasasassasas");
+		paciente.setCpf("123.123.123-12");
+		paciente.setRg("123");
+		paciente.getEndereco().setLogradouro("Rua 01");
+		paciente.getEndereco().setNumero("132");
+		paciente.getEndereco().setComplemento("Apto 1001");
+		paciente.getEndereco().setBairro("Boa Viagem");
+		paciente.getEndereco().setCep("12100-213");
+		paciente.getEndereco().setCidade("Recife");
+		paciente.getEndereco().setUf("PE");
+		paciente.getEndereco().setPais("Brasil");
+		paciente.setContato("3333-3333");
+		paciente.setDtNascimento(new SimpleDateFormat("dd/MM/yyyy").parse("26/09/1997"));
+		paciente.setEmail("email@email.com");
+		paciente.setEstadoCivil(EstadoCivil.SOLTEIRO);
+		negocioPaciente.refresh(paciente);
+	}
+
+	@Test(expected = Exception.class)
+	public void testarRefreshCPFVazio() throws Exception {
+		paciente.setCpf("");
+		paciente.setNome("Juca");
+		paciente.setRg("123");
+		paciente.getEndereco().setLogradouro("Rua 01");
+		paciente.getEndereco().setNumero("132");
+		paciente.getEndereco().setComplemento("Apto 1001");
+		paciente.getEndereco().setBairro("Boa Viagem");
+		paciente.getEndereco().setCep("12100-213");
+		paciente.getEndereco().setCidade("Recife");
+		paciente.getEndereco().setUf("PE");
+		paciente.getEndereco().setPais("Brasil");
+		paciente.setContato("3333-3333");
+		paciente.setDtNascimento(new SimpleDateFormat("dd/MM/yyyy").parse("26/09/1997"));
+		paciente.setEmail("email@email.com");
+		paciente.setEstadoCivil(EstadoCivil.SOLTEIRO);
+		negocioPaciente.refresh(paciente);
+	}
+
+	@Test(expected = Exception.class)
+	public void testarRefreshCPFMaiorQueEsperado() throws Exception {
+		paciente.setCpf("123.213.213-122");
+		paciente.setNome("Juca");
+		paciente.setRg("123");
+		paciente.getEndereco().setLogradouro("Rua 01");
+		paciente.getEndereco().setNumero("132");
+		paciente.getEndereco().setComplemento("Apto 1001");
+		paciente.getEndereco().setBairro("Boa Viagem");
+		paciente.getEndereco().setCep("12100-213");
+		paciente.getEndereco().setCidade("Recife");
+		paciente.getEndereco().setUf("PE");
+		paciente.getEndereco().setPais("Brasil");
+		paciente.setContato("3333-3333");
+		paciente.setDtNascimento(new SimpleDateFormat("dd/MM/yyyy").parse("26/09/1997"));
+		paciente.setEmail("email@email.com");
+		paciente.setEstadoCivil(EstadoCivil.SOLTEIRO);
+		negocioPaciente.refresh(paciente);
+	}
+
+	@Test(expected = Exception.class)
+	public void testarRefreshRGVazio() throws Exception {
+		paciente.setRg("");
+		paciente.setNome("Juca");
+		paciente.setCpf("123.123.123-12");
+		paciente.getEndereco().setLogradouro("Rua 01");
+		paciente.getEndereco().setNumero("132");
+		paciente.getEndereco().setComplemento("Apto 1001");
+		paciente.getEndereco().setBairro("Boa Viagem");
+		paciente.getEndereco().setCep("12100-213");
+		paciente.getEndereco().setCidade("Recife");
+		paciente.getEndereco().setUf("PE");
+		paciente.getEndereco().setPais("Brasil");
+		paciente.setContato("3333-3333");
+		paciente.setDtNascimento(new SimpleDateFormat("dd/MM/yyyy").parse("26/09/1997"));
+		paciente.setEmail("email@email.com");
+		paciente.setEstadoCivil(EstadoCivil.SOLTEIRO);
+		negocioPaciente.refresh(paciente);
+	}
+
+	@Test(expected = Exception.class)
+	public void testarRefreshRGMaiorQueEsperado() throws Exception {
+		paciente.setRg("123456789012345678901");
+		paciente.setNome("Juca");
+		paciente.setCpf("123.123.123-12");
+		paciente.getEndereco().setLogradouro("Rua 01");
+		paciente.getEndereco().setNumero("132");
+		paciente.getEndereco().setComplemento("Apto 1001");
+		paciente.getEndereco().setBairro("Boa Viagem");
+		paciente.getEndereco().setCep("12100-213");
+		paciente.getEndereco().setCidade("Recife");
+		paciente.getEndereco().setUf("PE");
+		paciente.getEndereco().setPais("Brasil");
+		paciente.setContato("3333-3333");
+		paciente.setDtNascimento(new SimpleDateFormat("dd/MM/yyyy").parse("26/09/1997"));
+		paciente.setEmail("email@email.com");
+		paciente.setEstadoCivil(EstadoCivil.SOLTEIRO);
+		negocioPaciente.refresh(paciente);
+	}
+
+	@Test(expected = Exception.class)
+	public void testarRefreshLogradouroVazio() throws Exception {
+		paciente.getEndereco().setLogradouro("");
+		paciente.setNome("Juca");
+		paciente.setCpf("123.123.123-12");
+		paciente.setRg("123");
+		paciente.getEndereco().setNumero("132");
+		paciente.getEndereco().setComplemento("Apto 1001");
+		paciente.getEndereco().setBairro("Boa Viagem");
+		paciente.getEndereco().setCep("12100-213");
+		paciente.getEndereco().setCidade("Recife");
+		paciente.getEndereco().setUf("PE");
+		paciente.getEndereco().setPais("Brasil");
+		paciente.setContato("3333-3333");
+		paciente.setDtNascimento(new SimpleDateFormat("dd/MM/yyyy").parse("26/09/1997"));
+		paciente.setEmail("email@email.com");
+		paciente.setEstadoCivil(EstadoCivil.SOLTEIRO);
+		negocioPaciente.refresh(paciente);
+	}
+
+	@Test(expected = Exception.class)
+	public void testarRefreshLogradouroMaiorQueEsperado() throws Exception {
+		paciente.getEndereco().setLogradouro("asaaasasasassasasdsdsasasassasasasasassasasasasassa");
+		paciente.setNome("Juca");
+		paciente.setCpf("123.123.123-12");
+		paciente.setRg("123");
+		paciente.getEndereco().setNumero("132");
+		paciente.getEndereco().setComplemento("Apto 1001");
+		paciente.getEndereco().setBairro("Boa Viagem");
+		paciente.getEndereco().setCep("12100-213");
+		paciente.getEndereco().setCidade("Recife");
+		paciente.getEndereco().setUf("PE");
+		paciente.getEndereco().setPais("Brasil");
+		paciente.setContato("3333-3333");
+		paciente.setDtNascimento(new SimpleDateFormat("dd/MM/yyyy").parse("26/09/1997"));
+		paciente.setEmail("email@email.com");
+		paciente.setEstadoCivil(EstadoCivil.SOLTEIRO);
+		negocioPaciente.refresh(paciente);
+	}
+
+	@Test(expected = Exception.class)
+	public void testarRefreshNumeroVazio() throws Exception {
+		paciente.getEndereco().setLogradouro("Rua 01");
+		paciente.setNome("Juca");
+		paciente.setCpf("123.123.123-12");
+		paciente.setRg("123");
+		paciente.getEndereco().setNumero("");
+		paciente.getEndereco().setComplemento("Apto 1001");
+		paciente.getEndereco().setBairro("Boa Viagem");
+		paciente.getEndereco().setCep("12100-213");
+		paciente.getEndereco().setCidade("Recife");
+		paciente.getEndereco().setUf("PE");
+		paciente.getEndereco().setPais("Brasil");
+		paciente.setContato("3333-3333");
+		paciente.setDtNascimento(new SimpleDateFormat("dd/MM/yyyy").parse("26/09/1997"));
+		paciente.setEmail("email@email.com");
+		paciente.setEstadoCivil(EstadoCivil.SOLTEIRO);
+		negocioPaciente.refresh(paciente);
+	}
+
+	@Test(expected = Exception.class)
+	public void testarRefreshNumeroMaiorQueEsperado() throws Exception {
+		paciente.getEndereco().setLogradouro("Rua 01");
+		paciente.setNome("Juca");
+		paciente.setCpf("123.123.123-12");
+		paciente.setRg("123");
+		paciente.getEndereco().setNumero("13245678901");
+		paciente.getEndereco().setComplemento("Apto 1001");
+		paciente.getEndereco().setBairro("Boa Viagem");
+		paciente.getEndereco().setCep("12100-213");
+		paciente.getEndereco().setCidade("Recife");
+		paciente.getEndereco().setUf("PE");
+		paciente.getEndereco().setPais("Brasil");
+		paciente.setContato("3333-3333");
+		paciente.setDtNascimento(new SimpleDateFormat("dd/MM/yyyy").parse("26/09/1997"));
+		paciente.setEmail("email@email.com");
+		paciente.setEstadoCivil(EstadoCivil.SOLTEIRO);
+		negocioPaciente.refresh(paciente);
+	}
+
+	@Test(expected = Exception.class)
+	public void testarRefreshComplementoVazio() throws Exception {
+		paciente.getEndereco().setLogradouro("Rua 01");
+		paciente.setNome("Juca");
+		paciente.setCpf("123.123.123-12");
+		paciente.setRg("123");
+		paciente.getEndereco().setNumero("132");
+		paciente.getEndereco().setComplemento("");
+		paciente.getEndereco().setBairro("Boa Viagem");
+		paciente.getEndereco().setCep("12100-213");
+		paciente.getEndereco().setCidade("Recife");
+		paciente.getEndereco().setUf("PE");
+		paciente.getEndereco().setPais("Brasil");
+		paciente.setContato("3333-3333");
+		paciente.setDtNascimento(new SimpleDateFormat("dd/MM/yyyy").parse("26/09/1997"));
+		paciente.setEmail("email@email.com");
+		paciente.setEstadoCivil(EstadoCivil.SOLTEIRO);
+		negocioPaciente.refresh(paciente);
+	}
+
+	@Test(expected = Exception.class)
+	public void testarRefreshComplementoMaiorQueEsperado() throws Exception {
+		paciente.getEndereco().setLogradouro("Rua 01");
+		paciente.setNome("Juca");
+		paciente.setCpf("123.123.123-12");
+		paciente.setRg("123");
+		paciente.getEndereco().setNumero("132");
+		paciente.getEndereco().setComplemento("Complemento");
+		paciente.getEndereco().setBairro("Boa Viagem");
+		paciente.getEndereco().setCep("12100-213");
+		paciente.getEndereco().setCidade("Recife");
+		paciente.getEndereco().setUf("PE");
+		paciente.getEndereco().setPais("Brasil");
+		paciente.setContato("3333-3333");
+		paciente.setDtNascimento(new SimpleDateFormat("dd/MM/yyyy").parse("26/09/1997"));
+		paciente.setEmail("email@email.com");
+		paciente.setEstadoCivil(EstadoCivil.SOLTEIRO);
+		negocioPaciente.refresh(paciente);
+	}
+
+	@Test(expected = Exception.class)
+	public void testarRefreshBairroVazio() throws Exception {
+		paciente.getEndereco().setLogradouro("Rua 01");
+		paciente.setNome("Juca");
+		paciente.setCpf("123.123.123-12");
+		paciente.setRg("123");
+		paciente.getEndereco().setNumero("132");
+		paciente.getEndereco().setComplemento("Apto 1001");
+		paciente.getEndereco().setBairro("");
+		paciente.getEndereco().setCep("12100-213");
+		paciente.getEndereco().setCidade("Recife");
+		paciente.getEndereco().setUf("PE");
+		paciente.getEndereco().setPais("Brasil");
+		paciente.setContato("3333-3333");
+		paciente.setDtNascimento(new SimpleDateFormat("dd/MM/yyyy").parse("26/09/1997"));
+		paciente.setEmail("email@email.com");
+		paciente.setEstadoCivil(EstadoCivil.SOLTEIRO);
+		negocioPaciente.refresh(paciente);
+	}
+
+	@Test(expected = Exception.class)
+	public void testarRefreshBairroMaiorQueEsperado() throws Exception {
+		paciente.getEndereco().setLogradouro("Rua 01");
+		paciente.setNome("Juca");
+		paciente.setCpf("123.123.123-12");
+		paciente.setRg("123");
+		paciente.getEndereco().setNumero("132");
+		paciente.getEndereco().setComplemento("Apto 1001");
+		paciente.getEndereco().setBairro("Bairro Maior Que vinte");
+		paciente.getEndereco().setCep("12100-213");
+		paciente.getEndereco().setCidade("Recife");
+		paciente.getEndereco().setUf("PE");
+		paciente.getEndereco().setPais("Brasil");
+		paciente.setContato("3333-3333");
+		paciente.setDtNascimento(new SimpleDateFormat("dd/MM/yyyy").parse("26/09/1997"));
+		paciente.setEmail("email@email.com");
+		paciente.setEstadoCivil(EstadoCivil.SOLTEIRO);
+		negocioPaciente.refresh(paciente);
+	}
+
+	@Test(expected = Exception.class)
+	public void testarRefreshCEPVazio() throws Exception {
+		paciente.getEndereco().setLogradouro("Rua 01");
+		paciente.setNome("Juca");
+		paciente.setCpf("123.123.123-12");
+		paciente.setRg("123");
+		paciente.getEndereco().setNumero("132");
+		paciente.getEndereco().setComplemento("Apto 1001");
+		paciente.getEndereco().setBairro("Bairro");
+		paciente.getEndereco().setCep("");
+		paciente.getEndereco().setCidade("Recife");
+		paciente.getEndereco().setUf("PE");
+		paciente.getEndereco().setPais("Brasil");
+		paciente.setContato("3333-3333");
+		paciente.setDtNascimento(new SimpleDateFormat("dd/MM/yyyy").parse("26/09/1997"));
+		paciente.setEmail("email@email.com");
+		paciente.setEstadoCivil(EstadoCivil.SOLTEIRO);
+		negocioPaciente.refresh(paciente);
+	}
+
+	@Test(expected = Exception.class)
+	public void testarRefreshCEPMaiorQueEsperado() throws Exception {
+		paciente.getEndereco().setLogradouro("RUa 01");
+		paciente.setNome("Juca");
+		paciente.setCpf("123.123.123-12");
+		paciente.setRg("123");
+		paciente.getEndereco().setNumero("132");
+		paciente.getEndereco().setComplemento("Apto 1001");
+		paciente.getEndereco().setBairro("Bairro");
+		paciente.getEndereco().setCep("12100-2213");
+		paciente.getEndereco().setCidade("Recife");
+		paciente.getEndereco().setUf("PE");
+		paciente.getEndereco().setPais("Brasil");
+		paciente.setContato("3333-3333");
+		paciente.setDtNascimento(new SimpleDateFormat("dd/MM/yyyy").parse("26/09/1997"));
+		paciente.setEmail("email@email.com");
+		paciente.setEstadoCivil(EstadoCivil.SOLTEIRO);
+		negocioPaciente.refresh(paciente);
+	}
+
+	@Test(expected = Exception.class)
+	public void testarRefreshCidadeVazio() throws Exception {
+		paciente.getEndereco().setLogradouro("Rua 01");
+		paciente.setNome("Juca");
+		paciente.setCpf("123.123.123-12");
+		paciente.setRg("123");
+		paciente.getEndereco().setNumero("132");
+		paciente.getEndereco().setComplemento("Apto 1001");
+		paciente.getEndereco().setBairro("Bairro");
+		paciente.getEndereco().setCep("12100-213");
+		paciente.getEndereco().setCidade("");
+		paciente.getEndereco().setUf("PE");
+		paciente.getEndereco().setPais("Brasil");
+		paciente.setContato("3333-3333");
+		paciente.setDtNascimento(new SimpleDateFormat("dd/MM/yyyy").parse("26/09/1997"));
+		paciente.setEmail("email@email.com");
+		paciente.setEstadoCivil(EstadoCivil.SOLTEIRO);
+		negocioPaciente.refresh(paciente);
+	}
+
+	@Test(expected = Exception.class)
+	public void testarRefreshCidadeMaiorQueEsperado() throws Exception {
+		paciente.getEndereco().setLogradouro("Rua 01");
+		paciente.setNome("Juca");
+		paciente.setCpf("123.123.123-12");
+		paciente.setRg("123");
+		paciente.getEndereco().setNumero("132");
+		paciente.getEndereco().setComplemento("Apto 1001");
+		paciente.getEndereco().setBairro("Bairro ");
+		paciente.getEndereco().setCep("12100-213");
+		paciente.getEndereco().setCidade("Cidade Maior que o permitido para inserir no bancoo");
+		paciente.getEndereco().setUf("PE");
+		paciente.getEndereco().setPais("Brasil");
+		paciente.setContato("3333-3333");
+		paciente.setDtNascimento(new SimpleDateFormat("dd/MM/yyyy").parse("26/09/1997"));
+		paciente.setEmail("email@email.com");
+		paciente.setEstadoCivil(EstadoCivil.SOLTEIRO);
+		negocioPaciente.refresh(paciente);
+	}
+
+	@Test(expected = Exception.class)
+	public void testarRefreshUfVazio() throws Exception {
+		paciente.getEndereco().setLogradouro("Rua 01");
+		paciente.setNome("Juca");
+		paciente.setCpf("123.123.123-12");
+		paciente.setRg("123");
+		paciente.getEndereco().setNumero("132");
+		paciente.getEndereco().setComplemento("Apto 1001");
+		paciente.getEndereco().setBairro("Bairro ");
+		paciente.getEndereco().setCep("12100-213");
+		paciente.getEndereco().setCidade("Cidade");
+		paciente.getEndereco().setUf("");
+		paciente.getEndereco().setPais("Brasil");
+		paciente.setContato("3333-3333");
+		paciente.setDtNascimento(new SimpleDateFormat("dd/MM/yyyy").parse("26/09/1997"));
+		paciente.setEmail("email@email.com");
+		paciente.setEstadoCivil(EstadoCivil.SOLTEIRO);
+		negocioPaciente.refresh(paciente);
+	}
+
+	@Test(expected = Exception.class)
+	public void testarRefreshUfMaiorQueEsperado() throws Exception {
+		paciente.getEndereco().setLogradouro("Rua 01");
+		paciente.setNome("Juca");
+		paciente.setCpf("123.123.123-12");
+		paciente.setRg("123");
+		paciente.getEndereco().setNumero("132");
+		paciente.getEndereco().setComplemento("Apto 1001");
+		paciente.getEndereco().setBairro("Bairro ");
+		paciente.getEndereco().setCep("12100-213");
+		paciente.getEndereco().setCidade("Cidade");
+		paciente.getEndereco().setUf("PEE");
+		paciente.getEndereco().setPais("Brasil");
+		paciente.setContato("3333-3333");
+		paciente.setDtNascimento(new SimpleDateFormat("dd/MM/yyyy").parse("26/09/1997"));
+		paciente.setEmail("email@email.com");
+		paciente.setEstadoCivil(EstadoCivil.SOLTEIRO);
+		negocioPaciente.refresh(paciente);
+	}
+
+	@Test(expected = Exception.class)
+	public void testarRefreshPaisVazio() throws Exception {
+		paciente.setNome("Juca");
+		paciente.setCpf("123.123.123-12");
+		paciente.setRg("123");
+		paciente.getEndereco().setLogradouro("Rua 01");
+		paciente.getEndereco().setNumero("132");
+		paciente.getEndereco().setComplemento("Apto 1001");
+		paciente.getEndereco().setBairro("Boa Viagem");
+		paciente.getEndereco().setCep("12100-213");
+		paciente.getEndereco().setCidade("Recife");
+		paciente.getEndereco().setUf("PE");
+		paciente.getEndereco().setPais("");
+		paciente.setContato("3333-3333");
+		paciente.setDtNascimento(new SimpleDateFormat("dd/MM/yyyy").parse("26/09/1997"));
+		paciente.setEmail("email@email.com");
+		paciente.setEstadoCivil(EstadoCivil.SOLTEIRO);
+		negocioPaciente.refresh(paciente);
+	}
+
+	@Test(expected = Exception.class)
+	public void testarRefreshPaisMaiorQueEsperado() throws Exception {
+		paciente.setNome("Juca");
+		paciente.setCpf("123.123.123-12");
+		paciente.setRg("123");
+		paciente.getEndereco().setLogradouro("Rua 01");
+		paciente.getEndereco().setNumero("132");
+		paciente.getEndereco().setComplemento("Apto 1001");
+		paciente.getEndereco().setBairro("Boa Viagem");
+		paciente.getEndereco().setCep("12100-213");
+		paciente.getEndereco().setCidade("Recife");
+		paciente.getEndereco().setUf("PE");
+		paciente.getEndereco().setPais("pais maior que o esperado 30!!!");
+		paciente.setContato("3333-3333");
+		paciente.setDtNascimento(new SimpleDateFormat("dd/MM/yyyy").parse("26/09/1997"));
+		paciente.setEmail("email@email.com");
+		paciente.setEstadoCivil(EstadoCivil.SOLTEIRO);
+		negocioPaciente.refresh(paciente);
+	}
+
+	@Test(expected = Exception.class)
+	public void testarRefreshContatoVazio() throws Exception {
+		paciente.setNome("Juca");
+		paciente.setCpf("123.123.123-12");
+		paciente.setRg("123");
+		paciente.getEndereco().setLogradouro("Rua 01");
+		paciente.getEndereco().setNumero("132");
+		paciente.getEndereco().setComplemento("Apto 1001");
+		paciente.getEndereco().setBairro("Boa Viagem");
+		paciente.getEndereco().setCep("12100-213");
+		paciente.getEndereco().setCidade("Recife");
+		paciente.getEndereco().setUf("PE");
+		paciente.getEndereco().setPais("Brasil");
+		paciente.setContato("");
+		paciente.setDtNascimento(new SimpleDateFormat("dd/MM/yyyy").parse("26/09/1997"));
+		paciente.setEmail("email@email.com");
+		paciente.setEstadoCivil(EstadoCivil.SOLTEIRO);
+		negocioPaciente.refresh(paciente);
+	}
+
+	@Test(expected = Exception.class)
+	public void testarRefreshContatoMaiorQueEsperado() throws Exception {
+		paciente.setNome("Juca");
+		paciente.setCpf("123.123.123-12");
+		paciente.setRg("123");
+		paciente.getEndereco().setLogradouro("Rua 01");
+		paciente.getEndereco().setNumero("132");
+		paciente.getEndereco().setComplemento("Apto 1001");
+		paciente.getEndereco().setBairro("Boa Viagem");
+		paciente.getEndereco().setCep("12100-213");
+		paciente.getEndereco().setCidade("Recife");
+		paciente.getEndereco().setUf("PE");
+		paciente.getEndereco().setPais("Brasil");
+		paciente.setContato("(12)2345-12332444");
+		paciente.setDtNascimento(new SimpleDateFormat("dd/MM/yyyy").parse("26/09/1997"));
+		paciente.setEmail("email@email.com");
+		paciente.setEstadoCivil(EstadoCivil.SOLTEIRO);
+		negocioPaciente.refresh(paciente);
+	}
+
+	@Test(expected = Exception.class)
+	public void testarRefreshEstadoCivilNull() throws Exception {
+		paciente.setNome("Juca");
+		paciente.setCpf("123.123.123-12");
+		paciente.setRg("123");
+		paciente.getEndereco().setLogradouro("Rua 01");
+		paciente.getEndereco().setNumero("132");
+		paciente.getEndereco().setComplemento("Apto 1001");
+		paciente.getEndereco().setBairro("Boa Viagem");
+		paciente.getEndereco().setCep("12100-213");
+		paciente.getEndereco().setCidade("Recife");
+		paciente.getEndereco().setUf("PE");
+		paciente.getEndereco().setPais("Brasil");
+		paciente.setContato("(81)2322-3222");
+		paciente.setDtNascimento(new SimpleDateFormat("dd/MM/yyyy").parse("26/09/1997"));
+		paciente.setEmail("email@email.com");
+		paciente.setEstadoCivil(null);
+		negocioPaciente.refresh(paciente);
 	}
 
 }
