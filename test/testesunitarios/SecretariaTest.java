@@ -1,5 +1,7 @@
 package testesunitarios;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -33,6 +35,25 @@ public class SecretariaTest {
 
         // Then
         Assert.assertEquals(expected, actual);
+	}
+	
+	@Test
+	public void testToString() {
+		// Given
+		String expected = "";
+		expected = "ID: " + secretaria.getId();
+		expected += "Nome: " + secretaria.getNome();
+		expected += "CPF: " + secretaria.getCpf();
+		expected += "Contato: " + secretaria.getContato();
+		expected += "E-Mail: " + secretaria.getEmail();
+		expected += "Data de Nascimento: " + secretaria.getDtNascimento();
+		expected += "Estado Civil: " + secretaria.getEstadoCivil();
+		
+		// When
+		String actual = secretaria.toString();
+		
+		// Then
+		assertEquals(expected, actual);
 	}
 
 }
