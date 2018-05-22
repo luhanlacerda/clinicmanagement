@@ -34,7 +34,7 @@ public class Secretaria extends Pessoa {
 		retorno += "CPF: " + super.getCpf();
 		retorno += "Contato: " + super.getContato();
 		retorno += "E-Mail: " + super.getEmail();
-		retorno += "Data de Nascimento: " + super.getDtNascimento().toString();
+		retorno += "Data de Nascimento: " + super.getDtNascimento();
 		retorno += "Estado Civil: " + super.getEstadoCivil();
 		return retorno;
 	}
