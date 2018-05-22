@@ -14,55 +14,40 @@ public class NegocioEspecialidade implements INegocioEspecialidade {
 
 	private DAOEspecialidade especialidadeDAO = DAOFactory.getEspecialidadeDAO();
 
-	private static final int DESCRICAO_SIZE = 400;
+	private static final int DESCRICAO_SIZE = 40;
 
 	@Override
-	public void insert(Especialidade especialidade) {
-
-		try {
-			if (especialidade.getDescricao().trim().isEmpty()) {
-				throw new Exception("Campo descri��o especialidade vazio. Informe a descri��o de especialidade.");
-			}
-
-			if (especialidade.getDescricao().equals(null)) {
-				throw new Exception("Informar especialidade.");
-			}
-
-			if (especialidade.getDescricao().length() > DESCRICAO_SIZE) {
-				throw new Exception("Caracteres acima do permitido para descri��o de especialidade.");
-			}
-
-			especialidadeDAO.insert(especialidade);
-		} catch (Exception ex) {
-			ex.printStackTrace();
+	public void insert(Especialidade especialidade) throws Exception {
+		if (especialidade.getDescricao().trim().isEmpty()) {
+			throw new Exception("Campo descri��o especialidade vazio. Informe a descri��o de especialidade.");
 		}
+
+		if (especialidade.getDescricao().length() > DESCRICAO_SIZE) {
+			throw new Exception("Caracteres acima do permitido para descri��o de especialidade.");
+		}
+
+		especialidadeDAO.insert(especialidade);
 	}
 
 	@Override
 	public void update(Especialidade especialidade) throws Exception {
+		if (especialidade != null && especialidade.getDescricao().trim().isEmpty()) {
+			throw new Exception("Campo descri��o especialidade vazio. Por favor, informe a descri��o.");
+		}
 
-			if (especialidade != null && especialidade.getDescricao().trim().isEmpty()) {
-				throw new Exception("Campo descri��o especialidade vazio. Por favor, informe a descri��o.");
-			}
+		if (especialidade.getDescricao().length() > DESCRICAO_SIZE) {
+			throw new Exception("Caracteres acima do permitido para descri��o de especialidade.");
+		}
 
-			if (especialidade.getDescricao().length() > DESCRICAO_SIZE) {
-				throw new Exception("Caracteres acima do permitido para descri��o de especialidade.");
-			}
-			
-			especialidadeDAO.update(especialidade);
+		especialidadeDAO.update(especialidade);
 	}
 
 	@Override
-	public void remove(Especialidade especialidade) {
-		try {
-			if (especialidade.getId() < 0) {
-				throw new Exception("Id inválido");
-			}
-			this.especialidadeDAO.remove(especialidade);
-		} catch (Exception ex) {
-			ex.printStackTrace();
+	public void remove(Especialidade especialidade) throws Exception {
+		if (especialidade.getId() < 0) {
+			throw new Exception("Id inválido");
 		}
-
+		this.especialidadeDAO.remove(especialidade);
 	}
 
 	@SuppressWarnings("unchecked")
@@ -81,30 +66,21 @@ public class NegocioEspecialidade implements INegocioEspecialidade {
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		}
-		
+
 		return (T) especialidadeDAO.searchByKey(chave);
 	}
 
 	@Override
-	public void refresh(Especialidade especialidade) {
-		try {
-			if (especialidade.getDescricao().trim().isEmpty()) {
-				throw new Exception("Campo descri��o especialidade vazio. Informe a descri��o de especialidade.");
-			}
-
-			if (especialidade.getDescricao().equals(null)) {
-				throw new Exception("Informar especialidade.");
-			}
-
-			if (especialidade.getDescricao().length() > DESCRICAO_SIZE) {
-				throw new Exception("Caracteres acima do permitido para descri��o de especialidade.");
-			}
-
-			especialidadeDAO.refresh(especialidade);
-		} catch (Exception ex) {
-			ex.printStackTrace();
+	public void refresh(Especialidade especialidade) throws Exception {
+		if (especialidade.getDescricao().trim().isEmpty()) {
+			throw new Exception("Campo descri��o especialidade vazio. Informe a descri��o de especialidade.");
 		}
 
+		if (especialidade.getDescricao().length() > DESCRICAO_SIZE) {
+			throw new Exception("Caracteres acima do permitido para descri��o de especialidade.");
+		}
+
+		especialidadeDAO.refresh(especialidade);
 	}
 
 	@Override
@@ -122,5 +98,5 @@ public class NegocioEspecialidade implements INegocioEspecialidade {
 	public <T> List<T> getAll(Class<T> classType) {
 		return (List<T>) especialidadeDAO.getAll();
 	}
-	
+
 }
