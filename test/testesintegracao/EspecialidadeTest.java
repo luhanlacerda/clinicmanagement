@@ -33,12 +33,7 @@ public class EspecialidadeTest {
 
 	@Test(expected = Exception.class)
 	public void testarInserirEspecialidadeComDescricaoMaiorQueEsperado() throws Exception {
-		String descricao = "dasdasdsadassadasdasdsadassadasdasdsadassadasdasdsadassadasdasd"
-				+ "sadassadasdasdsadassadasdasdsadassadasdasdsadassadasdasdsadassadasda"
-				+ "sdsadassadasdasdsadassadasdasdsadassadasdasdsadassadasdasdsadas"
-				+ "sadasdasdsadassadasdasdsadassadasdasdsadassadasdasdsadassada"
-				+ "sdasdsadassadasdasdsadassadasdasdsadassadasdasdsadassadasdas"
-				+ "dsadassadasdasdsadassadasdasdsadassadasdasdsadassadasdasdsadassad" + "asdasdsadassasdfsdfsds";
+		String descricao = "ajrhasiurhkdjrhkjsdfhkjsfhkjsdfhsjkdfhfdk";
 		especialidade.setDescricao(descricao);
 		negocioEspecialidade.insert(especialidade);
 	}
@@ -53,12 +48,7 @@ public class EspecialidadeTest {
 
 	@Test(expected = Exception.class)
 	public void testarUpdateEspecialidadeComDescricaoMaiorQueEsperado() throws Exception {
-		String descricao = "dasdasdsadassadasdasdsadassadasdasdsadassadasdasdsadassadasdasd"
-				+ "sadassadasdasdsadassadasdasdsadassadasdasdsadassadasdasdsadassadasda"
-				+ "sdsadassadasdasdsadassadasdasdsadassadasdasdsadassadasdasdsadas"
-				+ "sadasdasdsadassadasdasdsadassadasdasdsadassadasdasdsadassada"
-				+ "sdasdsadassadasdasdsadassadasdasdsadassadasdasdsadassadasdas"
-				+ "dsadassadasdasdsadassadasdasdsadassadasdasdsadassadasdasdsadassad" + "asdasdsadassasdfsdfsds";
+		String descricao = "ajrhasiurhkdjrhkjsdfhkjsfhkjsdfhsjkdfhfdk";
 		especialidade.setDescricao(descricao);
 		negocioEspecialidade.update(especialidade);
 	}
@@ -73,12 +63,7 @@ public class EspecialidadeTest {
 
 	@Test(expected = Exception.class)
 	public void testarRefreshEspecialidadeComDescricaoMaiorQueEsperado() throws Exception {
-		String descricao = "dasdasdsadassadasdasdsadassadasdasdsadassadasdasdsadassadasdasd"
-				+ "sadassadasdasdsadassadasdasdsadassadasdasdsadassadasdasdsadassadasda"
-				+ "sdsadassadasdasdsadassadasdasdsadassadasdasdsadassadasdasdsadas"
-				+ "sadasdasdsadassadasdasdsadassadasdasdsadassadasdasdsadassada"
-				+ "sdasdsadassadasdasdsadassadasdasdsadassadasdasdsadassadasdas"
-				+ "dsadassadasdasdsadassadasdasdsadassadasdasdsadassadasdasdsadassad" + "asdasdsadassasdfsdfsds";
+		String descricao = "ajrhasiurhkdjrhkjsdfhkjsfhkjsdfhsjkdfhfdk";
 		especialidade.setDescricao(descricao);
 		negocioEspecialidade.refresh(especialidade);
 	}

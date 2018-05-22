@@ -14,7 +14,7 @@ public class NegocioEspecialidade implements INegocioEspecialidade {
 
 	private DAOEspecialidade especialidadeDAO = DAOFactory.getEspecialidadeDAO();
 
-	private static final int DESCRICAO_SIZE = 400;
+	private static final int DESCRICAO_SIZE = 40;
 
 	@Override
 	public void insert(Especialidade especialidade) throws Exception {
@@ -74,10 +74,6 @@ public class NegocioEspecialidade implements INegocioEspecialidade {
 	public void refresh(Especialidade especialidade) throws Exception {
 		if (especialidade.getDescricao().trim().isEmpty()) {
 			throw new Exception("Campo descri��o especialidade vazio. Informe a descri��o de especialidade.");
-		}
-
-		if (especialidade.getDescricao().equals(null)) {
-			throw new Exception("Informar especialidade.");
 		}
 
 		if (especialidade.getDescricao().length() > DESCRICAO_SIZE) {
