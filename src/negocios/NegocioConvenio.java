@@ -18,24 +18,21 @@ public class NegocioConvenio implements INegocioConvenio {
 
 	@Override
 	public void insert(Convenio convenio) throws Exception {
-		try {
+		
 			if (convenio.getDescricao().isEmpty()) {
-				throw new Exception("Informar a Descri��o");
+				throw new Exception("Informar a Descricao");
 			}
 			
 			if (convenio.getDescricao().length() > DESCRICAO_SIZE) {
-				throw new Exception("Caracteres acimado permitido para a Descri��o");
+				throw new Exception("Caracteres acimado permitido para a Descricao");
 			}
-			
+
 			convenioDAO.insert(convenio);
-		} catch (Exception ex) {
-			ex.printStackTrace();
-		}
+		
 	}
 
 	@Override
 	public void update(Convenio convenio) throws Exception {
-		try {
 			if (convenio.getDescricao().isEmpty()) {
 				throw new Exception("Informar a Descri��o");
 			}
@@ -45,22 +42,15 @@ public class NegocioConvenio implements INegocioConvenio {
 			}
 			
 			convenioDAO.update(convenio);
-		} catch (Exception ex) {
-			ex.printStackTrace();
-		}
 	}
 
 	@Override
 	public void remove(Convenio convenio) throws Exception {
-		try {
 			if (convenio.getId() < 0) {
 				throw new Exception("Id inv�lido");
 			}
 			
 			convenioDAO.remove(convenio);
-		} catch (Exception ex) {
-			ex.printStackTrace();
-		}
 	}
 
 	@SuppressWarnings("unchecked")
@@ -85,7 +75,6 @@ public class NegocioConvenio implements INegocioConvenio {
 
 	@Override
 	public void refresh(Convenio convenio) throws Exception {
-		try {
 			if (convenio.getDescricao().isEmpty()) {
 				throw new Exception("Informar a Descri��o");
 			}
@@ -95,9 +84,6 @@ public class NegocioConvenio implements INegocioConvenio {
 			}
 			
 			convenioDAO.refresh(convenio);
-		} catch (Exception ex) {
-			ex.printStackTrace();
-		}
 	}
 
 	@Override
