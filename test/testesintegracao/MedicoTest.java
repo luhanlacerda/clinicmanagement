@@ -1,12 +1,9 @@
 package testesintegracao;
 
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.BeforeClass;
-import org.junit.Ignore;
 import org.junit.Test;
 
 import classesBasicas.Especialidade;
@@ -14,8 +11,6 @@ import classesBasicas.Medico;
 import classesBasicas.incorporada.EstadoCivil;
 import negocios.INegocioMedico;
 import negocios.NegocioMedico;
-
-
 
 public class MedicoTest {
 	
@@ -34,7 +29,7 @@ public class MedicoTest {
 		this.especialidade = new Especialidade();
 	}
 	@Test
-	public void testarInserirMedicoValido() throws ParseException {
+	public void testarInserirMedicoValido() throws Exception {
 		// Given
 		medico.setNome("Juca");
 		medico.setCpf("123.123.123-12");
@@ -51,14 +46,8 @@ public class MedicoTest {
 		medico.setDtNascimento(new SimpleDateFormat("dd/MM/yyyy").parse("26/09/1997"));
 		medico.setEmail("email@email.com");
 		medico.setEstadoCivil(EstadoCivil.SOLTEIRO);
-		Medico expected = medico;
-
-		// When
-		medico.setNome("Carlos");
-		Medico actual = medico;
-
-		// Then
-		Assert.assertEquals(expected, actual);
+		
+		negocioMedico.insert(medico);
 	}
 
 	@Test(expected = Exception.class)

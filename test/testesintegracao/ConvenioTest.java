@@ -1,11 +1,9 @@
 package testesintegracao;
 
 
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
 
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Ignore;
@@ -33,7 +31,7 @@ public class ConvenioTest {
 	}
 	
 	@Ignore
-	public void testarInserirConvenioValido() throws ParseException {
+	public void testarInserirConvenioValido() throws Exception {
 		//Given
 		Convenio c = new Convenio();
 		Paciente p = new Paciente();
@@ -55,14 +53,8 @@ public class ConvenioTest {
 		c.setDescricao("HAPVIDA");
 		c.setListaPacientes(Arrays.asList(p));
 		p.setConvenio(c);
-		Convenio expected = c;
 		
-		//When
-		c.setDescricao("Unimed");
-		Convenio actual = c;
-		
-		//Then
-		Assert.assertEquals(expected, actual);		
+		negocioConvenio.insert(c);
 	}
 	
 	@Test(expected = Exception.class)
