@@ -1,9 +1,7 @@
 package testesintegracao;
 
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Ignore;
@@ -30,7 +28,7 @@ public class SecretariaTest {
 	}
 
 	@Ignore
-	public void testarInserirSecretariaValido() throws ParseException {
+	public void testarInserirSecretariaValido() throws Exception {
 		// Given
 		secretaria.setNome("Juca");
 		secretaria.setCpf("123.123.123-12");
@@ -47,14 +45,8 @@ public class SecretariaTest {
 		secretaria.setDtNascimento(new SimpleDateFormat("dd/MM/yyyy").parse("26/09/1997"));
 		secretaria.setEmail("email@email.com");
 		secretaria.setEstadoCivil(EstadoCivil.SOLTEIRO);
-		Secretaria expected = secretaria;
-
-		// When
-		secretaria.setNome("Carlos");
-		Secretaria actual = secretaria;
-
-		// Then
-		Assert.assertEquals(expected, actual);
+		
+		negocioSecretaria.insert(secretaria);
 	}
 
 	@Test(expected = Exception.class)

@@ -6,7 +6,6 @@ import java.util.Collection;
 import java.util.List;
 
 import classesBasicas.Login;
-import classesBasicas.Medico;
 import dados.DAOFactory;
 import dados.DAOLogin;
 
@@ -20,7 +19,7 @@ public class NegocioLogin implements INegocioLogin {
 			throw new Exception("Campo usuario vazio. Informe um usuario.");
 		}
 
-		if (login != null && login.getPassword().equals(null)) {
+		if (login != null && login.getPassword().trim().isEmpty()) {
 			throw new Exception("Campo senha vazio. Informe uma senha.");
 		}
 
@@ -33,7 +32,7 @@ public class NegocioLogin implements INegocioLogin {
 			throw new Exception("Campo usuario vazio. Informe um usuario.");
 		}
 
-		if (login != null && login.getPassword().equals(null)) {
+		if (login != null && login.getPassword().trim().isEmpty()) {
 			throw new Exception("Campo senha vazio. Informe uma senha.");
 		}
 
@@ -53,7 +52,7 @@ public class NegocioLogin implements INegocioLogin {
 			throw new Exception("Campo usuario vazio. Informe um usuario.");
 		}
 
-		if (login != null && login.getPassword().equals(null)) {
+		if (login != null && login.getPassword().trim().isEmpty()) {
 			throw new Exception("Campo senha vazio. Informe uma senha.");
 		}
 
@@ -72,9 +71,10 @@ public class NegocioLogin implements INegocioLogin {
 
 	@Override
 	public void remove(Login login) throws Exception {
-		if (login.getId() < 0) {
+		if (login.getId() <= 0) {
 			throw new Exception("Id inválido");
 		}
+		
 		usuarioLoginDAO.remove(login);
 	}
 
@@ -87,12 +87,8 @@ public class NegocioLogin implements INegocioLogin {
 	@SuppressWarnings("unchecked")
 	@Override
 	public <T> T searchByKey(Serializable chave, Class<T> classType) throws Exception {
-		try {
-			if (chave.equals(null)) {
-				throw new Exception("Id inválido");
-			}
-		} catch (Exception ex) {
-			ex.printStackTrace();
+		if (chave == null) {
+			throw new Exception("Id inválido");
 		}
 		
 		return (T) usuarioLoginDAO.searchByKey(chave);
