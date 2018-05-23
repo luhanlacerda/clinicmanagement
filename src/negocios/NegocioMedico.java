@@ -14,7 +14,7 @@ import dados.DAOFactory;
 import dados.DAOMedico;
 import util.ValidatorUtils;
 
-public class NegocioMedico implements INegocioMedico {
+public class NegocioMedico extends RuntimeException implements INegocioMedico {
 
 	// Tamanhos Pré-Definidos
 	private static final int CPF_SIZE = 14;
@@ -30,12 +30,13 @@ public class NegocioMedico implements INegocioMedico {
 	private static final int PAIS_SIZE = 30;
 	private static final int CONTATO_SIZE = 16;
 	// private static final int ESTADO_CIVIL_SIZE = 11;
+	private static final int CRM_SIZE = 13;
 
 	private DAOMedico medicoDAO = DAOFactory.getMedicoDAO();
 
 	@Override
-	public void insert(Medico medico) {
-		try {
+	public void insert(Medico medico) throws Exception {
+		
 			if (medico.getNome().isEmpty()) {
 				throw new Exception("Informar nome");
 			}
@@ -146,17 +147,120 @@ public class NegocioMedico implements INegocioMedico {
 		
 			if (medico.getEstadoCivil().equals(null)) {
 				throw new Exception("Informar estado civil");
+			}
+			
+			if (medico.getNome().length() > NOME_SIZE) {
+				throw new Exception("Caracteres acima do permitido para o Nome");
+			}
+
+			if (medico.getCpf().trim().equals("   .   .   -  ") || (medico.getCpf().isEmpty())) {
+				throw new Exception("Informar CPF");
+			}
+			if (medico.getCpf().length() > CPF_SIZE) {
+				throw new Exception("Caracteres acima do permitido para o CPF");
+			}
+			if (medico.getRg().isEmpty()) {
+				throw new Exception("Informar RG");
+			}
+
+			if (medico.getRg().length() > RG_SIZE) {
+				throw new Exception("Caracteres acima do permitido para o RG");
+			}
+			if (medico.getCpf().length() > RG_SIZE) {
+				throw new Exception("Caracteres acima do permitido para o RG");
+			}
+
+			if (medico.getEndereco().getLogradouro().isEmpty()) {
+				throw new Exception("Informar Logradouro");
+			}
+			if (medico.getEndereco().getLogradouro().length() > LOGRADOURO_SIZE) {
+				throw new Exception("Caracteres acima do permitido para o Logradouro");
+			}
+
+			if (medico.getEndereco().getNumero().isEmpty()) {
+				throw new Exception("Informar numero da residência");
+			}
+
+			if (medico.getEndereco().getNumero().length() > NUMERO_SIZE) {
+				throw new Exception("Caracteres acima do permitido para o numero da residência");
+			}
+
+			if (medico.getEndereco().getComplemento().isEmpty()) {
+				throw new Exception("Informar Complemento");
+			}
+
+			if (medico.getEndereco().getComplemento().length() > COMPLEMENTO_SIZE) {
+				throw new Exception("Caracteres acima do permitido para o complemento");
+			}
+
+			if (medico.getEndereco().getBairro().isEmpty()) {
+				throw new Exception("Informar bairro");
+			}
+
+			if (medico.getEndereco().getBairro().length() > BAIRRO_SIZE) {
+				throw new Exception("Caracteres acima do permitido para o bairro");
+			}
+
+			if (medico.getEndereco().getCep().trim().equals("  .   -   ")
+					|| (medico.getEndereco().getCep().isEmpty())) {
+				throw new Exception("Informar CEP");
+			}
+
+			if (medico.getEndereco().getCep().length() > CEP_SIZE) {
+				throw new Exception("Caracteres acima do permitido para o CEP");
+			}
+
+			if (medico.getEndereco().getCidade().isEmpty()) {
+				throw new Exception("Informar cidade");
+			}
+
+			if (medico.getEndereco().getCidade().length() > CIDADE_SIZE) {
+				throw new Exception("Caracteres acima do permitido para a cidade");
+			}
+
+			if (medico.getEndereco().getUf().isEmpty()) {
+				throw new Exception("Informar UF");
+			}
+
+			if (medico.getEndereco().getUf().length() > UF_SIZE) {
+				throw new Exception("Caracteres acima do permitido para a UF");
+			}
+
+			if (medico.getEndereco().getPais().isEmpty()) {
+				throw new Exception("Informar país");
+			}
+
+			if (medico.getEndereco().getPais().length() > PAIS_SIZE) {
+				throw new Exception("Caracteres acima do permitido para o país");
+			}
+
+			if (medico.getContato().isEmpty()) {
+				throw new Exception("Informar contato");
+			}
+
+			if (medico.getContato().length() > CONTATO_SIZE) {
+				throw new Exception("Caracteres acima do permitido para o contato");
+			}
+
+			if (medico.getEstadoCivil().equals(null)) {
+				throw new Exception("Informar estado civil");
+			}
+			
+			if (medico.getEspecialidade().equals(null)) {
+				throw new Exception("Informar especialidade.");
+			}
+			
+			if (medico.getCrm().length() > CRM_SIZE) {
+				throw new Exception("Caracteres acima do permitido para o CRM");
 			}
 		
 			medicoDAO.insert(medico);
-		} catch (Exception ex) {
-			ex.printStackTrace();
-		}
+		
 	}
 
 	@Override
-	public void update(Medico medico) {
-		try {
+	public void update(Medico medico) throws Exception {
+		
 			if (medico.getNome().isEmpty()) {
 				throw new Exception("Informar nome");
 			}
@@ -269,23 +373,133 @@ public class NegocioMedico implements INegocioMedico {
 				throw new Exception("Informar estado civil");
 			}
 			
+			if (medico.getNome().isEmpty()) {
+				throw new Exception("Informar nome");
+			}
+
+			if (medico.getNome().length() > NOME_SIZE) {
+				throw new Exception("Caracteres acima do permitido para o Nome");
+			}
+
+			if (medico.getCpf().trim().equals("   .   .   -  ") || (medico.getCpf().isEmpty())) {
+				throw new Exception("Informar CPF");
+			}
+
+			if (medico.getCpf().length() > CPF_SIZE) {
+				throw new Exception("Caracteres acima do permitido para o CPF");
+			}
+
+			if (medico.getRg().isEmpty()) {
+				throw new Exception("Informar RG");
+			}
+
+			if (medico.getCpf().length() > RG_SIZE) {
+				throw new Exception("Caracteres acima do permitido para o RG");
+			}
+
+			if (medico.getEndereco().getLogradouro().isEmpty()) {
+				throw new Exception("Informar Logradouro");
+			}
+
+			if (medico.getEndereco().getLogradouro().length() > LOGRADOURO_SIZE) {
+				throw new Exception("Caracteres acima do permitido para o Logradouro");
+			}
+
+			if (medico.getEndereco().getNumero().isEmpty()) {
+				throw new Exception("Informar numero da residência");
+			}
+
+			if (medico.getEndereco().getNumero().length() > NUMERO_SIZE) {
+				throw new Exception("Caracteres acima do permitido para o numero da residência");
+			}
+
+			if (medico.getEndereco().getComplemento().isEmpty()) {
+				throw new Exception("Informar Complemento");
+			}
+
+			if (medico.getEndereco().getComplemento().length() > COMPLEMENTO_SIZE) {
+				throw new Exception("Caracteres acima do permitido para o complemento");
+			}
+
+			if (medico.getEndereco().getBairro().isEmpty()) {
+				throw new Exception("Informar bairro");
+			}
+
+			if (medico.getEndereco().getBairro().length() > BAIRRO_SIZE) {
+				throw new Exception("Caracteres acima do permitido para o bairro");
+			}
+
+			if (medico.getEndereco().getCep().trim().equals("  .   -   ")
+					|| (medico.getEndereco().getCep().isEmpty())) {
+				throw new Exception("Informar CEP");
+			}
+
+			if (medico.getEndereco().getCep().length() > CEP_SIZE) {
+				throw new Exception("Caracteres acima do permitido para o CEP");
+			}
+
+			if (medico.getEndereco().getCidade().isEmpty()) {
+				throw new Exception("Informar cidade");
+			}
+
+			if (medico.getEndereco().getCidade().length() > CIDADE_SIZE) {
+				throw new Exception("Caracteres acima do permitido para a cidade");
+			}
+
+			if (medico.getEndereco().getUf().isEmpty()) {
+				throw new Exception("Informar UF");
+			}
+
+			if (medico.getEndereco().getUf().length() > UF_SIZE) {
+				throw new Exception("Caracteres acima do permitido para a UF");
+			}
+
+			if (medico.getEndereco().getPais().isEmpty()) {
+				throw new Exception("Informar país");
+			}
+
+			if (medico.getEndereco().getPais().length() > PAIS_SIZE) {
+				throw new Exception("Caracteres acima do permitido para o país");
+			}
+
+			if (medico.getContato().isEmpty()) {
+				throw new Exception("Informar contato");
+			}
+
+			if (medico.getContato().length() > CONTATO_SIZE) {
+				throw new Exception("Caracteres acima do permitido para o contato");
+			}
+
+			if (medico.getEstadoCivil().equals(null)) {
+				throw new Exception("Informar estado civil");
+			}
+			
+			if (medico.getEspecialidade().equals(null)) {
+				throw new Exception("Informar especialidade.");
+			}
+			
+			if (medico.getEstadoCivil().equals(null)) {
+				throw new Exception("Informar estado civil");
+			}
+			
+			if (medico.getEspecialidade().equals(null)) {
+				throw new Exception("Informar especialidade.");
+			}
+			
+			if (medico.getCrm().length() > CRM_SIZE) {
+				throw new Exception("Caracteres acima do permitido para o CRM");
+			}
+			
 			medicoDAO.update(medico);
-		} catch (Exception ex) {
-			ex.printStackTrace();
-		}
 	}
 
 	@Override
-	public void remove(Medico medico) {
-		try {
+	public void remove(Medico medico) throws Exception	{
 			if (medico.getId() < 0) {
 				throw new Exception("Id inválido");
 			}
 			
 			medicoDAO.remove(medico);
-		} catch (Exception ex) {
-			ex.printStackTrace();
-		}
 	}
 
 	@SuppressWarnings("unchecked")
@@ -309,8 +523,8 @@ public class NegocioMedico implements INegocioMedico {
 	}
 
 	@Override
-	public void refresh(Medico medico) {
-		try {
+	public void refresh(Medico medico) throws Exception {
+
 			if (medico.getNome().isEmpty()) {
 				throw new Exception("Informar nome");
 			}
@@ -326,6 +540,10 @@ public class NegocioMedico implements INegocioMedico {
 			if (medico.getCpf().trim().equals("   .   .   -  ")) {
 				throw new Exception("Informar CPF");
 			}
+			
+			if (medico.getCpf().trim().equals("   .   .   -  ") || (medico.getCpf().isEmpty())) {
+ 				throw new Exception("Informar CPF");
+ 			}
 		
 			if (medico.getCpf().length() > CPF_SIZE) {
 				throw new Exception("Caracteres acima do permitido para o CPF");
@@ -424,9 +642,6 @@ public class NegocioMedico implements INegocioMedico {
 			}
 		
 			medicoDAO.refresh(medico);
-		} catch (Exception ex) {
-			ex.printStackTrace();
-		}
 	}
 
 	@Override
