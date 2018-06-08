@@ -19,6 +19,7 @@ public class LoginTest {
 	public void iniciarDriver() {
 		System.setProperty("webdriver.chrome.driver", driverPath + "chromedriver");
 		driver = new ChromeDriver();
+		driver.navigate().to(URL);
 	}
 
 	@After
@@ -28,11 +29,15 @@ public class LoginTest {
 
 	@Test
 	public void testarLogarUsuarioInvalido() {
-		driver.navigate().to(URL);
 		WebElement username = driver.findElement(By.id("formulariologin:username"));
-
 		username.sendKeys("");
-		username.submit();
+		//username.submit();
+		
+		WebElement password = driver.findElement(By.id("formulariologin:password"));
+		password.sendKeys("qwerty");
+		
+		WebElement btnLogar = driver.findElement(By.id("formulariologin:btnlogar"));
+		btnLogar.click();
 		
 		boolean existeMensagem = driver.getPageSource().contains("Username obrigatorio.");
 
@@ -41,15 +46,57 @@ public class LoginTest {
 	
 	@Test
 	public void testarLogarPasswordInvalido() {
-		driver.navigate().to(URL);
+		WebElement username = driver.findElement(By.id("formulariologin:username"));
+		username.sendKeys("Teste");
+		
 		WebElement password = driver.findElement(By.id("formulariologin:password"));
+		password.sendKeys("");
+		//password.submit();
 		
-		password.sendKeys("dasd");
-		password.submit();
+		WebElement btnLogar = driver.findElement(By.id("formulariologin:btnlogar"));
+		btnLogar.click();
 		
-		boolean existeMensagem = driver.getPageSource().contains("Username obrigatorio.");
+		boolean existeMensagem = driver.getPageSource().contains("Password obrigatorio.");
 
 		Assert.assertTrue(existeMensagem);
+	}
+	
+	@Test
+	public void testarLogarInvalido() {
+		WebElement username = driver.findElement(By.id("formulariologin:username"));
+		username.sendKeys("");
+		
+		WebElement password = driver.findElement(By.id("formulariologin:password"));
+		password.sendKeys("");
+		//password.submit();
+
+		WebElement btnLogar = driver.findElement(By.id("formulariologin:btnlogar"));
+		btnLogar.click();
+		
+		boolean existeMensagemErroUsername = driver.getPageSource().contains("Username obrigatorio.");
+		boolean existeMensagemErroPassword = driver.getPageSource().contains("Password obrigatorio.");
+
+		Assert.assertTrue(existeMensagemErroUsername);
+		Assert.assertTrue(existeMensagemErroPassword);
+	}
+	
+	@Test
+	public void testarLogar() {
+		WebElement username = driver.findElement(By.id("formulariologin:username"));
+		username.sendKeys("Teste");
+		
+		WebElement password = driver.findElement(By.id("formulariologin:password"));
+		password.sendKeys("qwerty");
+		//password.submit();
+
+		WebElement btnLogar = driver.findElement(By.id("formulariologin:btnlogar"));
+		btnLogar.click();
+		
+		boolean existeMensagemErroUsername = driver.getPageSource().contains("Username obrigatorio.");
+		boolean existeMensagemErroPassword = driver.getPageSource().contains("Password obrigatorio.");
+
+		Assert.assertFalse(existeMensagemErroUsername);
+		Assert.assertFalse(existeMensagemErroPassword);
 	}
 
 }
