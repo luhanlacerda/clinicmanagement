@@ -155,7 +155,7 @@ public class LoginTest {
 
 	}
 
-	@Test
+	@Ignore
 	public void testarAlterarLogin() {
 		driver.navigate().to(URL);
 
@@ -205,6 +205,34 @@ public class LoginTest {
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//div[@class='preloader']")));
 
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//td[contains(text(),'selenium alteracao')]")));
+	}
+	
+	@Test
+	public void testarRemoverLogin() {
+		driver.navigate().to(URL);
+
+		WebElement username = driver.findElement(By.id("formulariologin:username"));
+		username.sendKeys("Teste");
+
+		WebElement password = driver.findElement(By.id("formulariologin:password"));
+		password.sendKeys("qwerty");
+
+		WebElement btnLogar = driver.findElement(By.id("formulariologin:btnlogar"));
+		btnLogar.click();
+
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='preloader']")));
+
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//div[@class='preloader']")));
+
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.linkText("Login")));
+
+		driver.findElement(By.linkText("Login")).click();
+
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='preloader']")));
+
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//div[@class='preloader']")));
+
+		driver.findElement(By.name("j_idt32:j_idt36:1:j_idt48")).click();
 	}
 
 }
