@@ -64,7 +64,7 @@ public class EspecialidadeTest {
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//div[@class='preloader']")));
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@placeholder='Descrição']")));
 
-		driver.findElement(By.xpath("//input[@placeholder='Descrição']")).sendKeys("Chupetinha");
+		driver.findElement(By.xpath("//input[@placeholder='Descrição']")).sendKeys("Teste Inserir Selenium");
 		driver.findElement(By.xpath("//input[@value='Cadastrar']")).click();
 
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='preloader']")));
@@ -72,7 +72,7 @@ public class EspecialidadeTest {
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//td[contains(text(),'Chupetinha')]")));
 	}
 
-	@Test
+	@Ignore
 	public void testarAtualizarEspecialidade() {
 		driver.navigate().to(URL);
 
@@ -86,15 +86,12 @@ public class EspecialidadeTest {
 		btnLogar.click();
 
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='preloader']")));
-
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//div[@class='preloader']")));
-
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.linkText("Especialidade")));
 
 		driver.findElement(By.linkText("Especialidade")).click();
 
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='preloader']")));
-
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//div[@class='preloader']")));
 
 		driver.findElement(By.name("j_idt32:j_idt36:0:j_idt45")).click();
@@ -117,6 +114,31 @@ public class EspecialidadeTest {
 
 		wait.until(ExpectedConditions
 				.visibilityOfElementLocated(By.xpath("//td[contains(text(),'Teste Alterando Selenium')]")));
+	}
+	
+	@Test
+	public void testarRemoverEspecialidade() {
+		driver.navigate().to(URL);
+
+		WebElement username = driver.findElement(By.id("formulariologin:username"));
+		username.sendKeys("Teste");
+
+		WebElement password = driver.findElement(By.id("formulariologin:password"));
+		password.sendKeys("qwerty");
+
+		WebElement btnLogar = driver.findElement(By.id("formulariologin:btnlogar"));
+		btnLogar.click();
+
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='preloader']")));
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//div[@class='preloader']")));
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.linkText("Especialidade")));
+
+		driver.findElement(By.linkText("Especialidade")).click();
+
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='preloader']")));
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//div[@class='preloader']")));
+
+		driver.findElement(By.name("j_idt32:j_idt36:0:j_idt48")).click();
 	}
 
 }

@@ -48,35 +48,36 @@ public class ConvenioTest {
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//div[@class='preloader']")));
 
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.linkText("Convenio")));
-		
+
 		driver.findElement(By.linkText("Convenio")).click();
-		
-		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='preloader']")));
-		
-		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//div[@class='preloader']")));
-		
-		wait.until(ExpectedConditions.visibilityOfElementLocated(By.linkText("Novo Convenio")));
-		
-		driver.findElement(By.linkText("Novo Convenio")).click();
-		
-		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='preloader']")));
-		
-		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='preloader']")));
-		
-		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@placeholder='Descrição']")));
-		
-		driver.findElement(By.xpath("//input[@placeholder='Descrição']")).sendKeys("Teste Inserindo Selenium");
-		
-		driver.findElement(By.xpath("//input[@value='Cadastrar']")).click();
-		
+
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='preloader']")));
 
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//div[@class='preloader']")));
-		
-		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//td[contains(text(),'Teste Inserindo Selenium')]")));	
+
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.linkText("Novo Convenio")));
+
+		driver.findElement(By.linkText("Novo Convenio")).click();
+
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='preloader']")));
+
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='preloader']")));
+
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@placeholder='Descrição']")));
+
+		driver.findElement(By.xpath("//input[@placeholder='Descrição']")).sendKeys("Teste Inserir Selenium");
+
+		driver.findElement(By.xpath("//input[@value='Cadastrar']")).click();
+
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='preloader']")));
+
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//div[@class='preloader']")));
+
+		wait.until(ExpectedConditions
+				.visibilityOfElementLocated(By.xpath("//td[contains(text(),'Teste Inserindo Selenium')]")));
 
 	}
-	
+
 	@Ignore
 	public void testarAtualizarConvenio() {
 		driver.navigate().to(URL);
@@ -95,35 +96,36 @@ public class ConvenioTest {
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//div[@class='preloader']")));
 
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.linkText("Convenio")));
-		
+
 		driver.findElement(By.linkText("Convenio")).click();
-		
-		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='preloader']")));
-		
-		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//div[@class='preloader']")));
-		
-		driver.findElement(By.name("j_idt32:j_idt36:0:j_idt45")).click();
-		
-		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='preloader']")));
-		
-		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='preloader']")));
-		
-		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@placeholder='Descrição']")));
-		
-		driver.findElement(By.xpath("//input[@placeholder='Descrição']")).clear();
-		
-		driver.findElement(By.xpath("//input[@placeholder='Descrição']")).sendKeys("Teste Alterando Selenium");
-		
-		driver.findElement(By.xpath("//input[@value='Cadastrar']")).click();
-		
+
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='preloader']")));
 
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//div[@class='preloader']")));
-		
-		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//td[contains(text(),'Teste Alterando Selenium')]")));	
+
+		driver.findElement(By.name("j_idt32:j_idt36:0:j_idt45")).click();
+
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='preloader']")));
+
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='preloader']")));
+
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@placeholder='Descrição']")));
+
+		driver.findElement(By.xpath("//input[@placeholder='Descrição']")).clear();
+
+		driver.findElement(By.xpath("//input[@placeholder='Descrição']")).sendKeys("Teste Alterando Selenium");
+
+		driver.findElement(By.xpath("//input[@value='Cadastrar']")).click();
+
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='preloader']")));
+
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//div[@class='preloader']")));
+
+		wait.until(ExpectedConditions
+				.visibilityOfElementLocated(By.xpath("//td[contains(text(),'Teste Alterando Selenium')]")));
 
 	}
-	
+
 	@Test
 	public void testeRemoverConvenio() {
 		driver.navigate().to(URL);
@@ -142,13 +144,13 @@ public class ConvenioTest {
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//div[@class='preloader']")));
 
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.linkText("Convenio")));
-		
+
 		driver.findElement(By.linkText("Convenio")).click();
-		
+
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='preloader']")));
-		
+
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//div[@class='preloader']")));
-		
+
 		driver.findElement(By.name("j_idt32:j_idt36:0:j_idt48")).click();
 	}
 
