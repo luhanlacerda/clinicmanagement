@@ -15,7 +15,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class LoginTest {
 
 	private static final String URL = "http://localhost:8080/ClinicManagementFront/index.xhtml";
-	public static String driverPath = "/Users/luhanlacerda/Documents/Developer/Git/clinicmanagement/lib-testes/";
+	public static String driverPath = "lib-testes/";
 	public static WebDriver driver;
 	public static WebDriverWait wait;
 

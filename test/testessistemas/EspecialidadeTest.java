@@ -1,7 +1,6 @@
 package testessistemas;
 
 import org.junit.After;
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
@@ -9,25 +8,21 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class EspecialidadeTest {
 
 	private static final String URL = "http://localhost:8080/ClinicManagementFront/index.xhtml";
-	private static String driverPath = "/Users/luhanlacerda/Documents/Developer/Git/clinicmanagement/lib-testes/";
-	// "/Users/vitoroliveira/Downloads/clinicmanagement/lib-testes/";
+	private static String driverPath = "lib-testes/";
 	private static WebDriver driver;
 	private static WebDriverWait wait;
-	private static Actions actions;
 
 	@Before
 	public void iniciarDriver() {
 		System.setProperty("webdriver.chrome.driver", driverPath + "chromedriver");
 		driver = new ChromeDriver();
 		wait = new WebDriverWait(driver, 20);
-		actions = new Actions(driver);
 	}
 
 	@After
