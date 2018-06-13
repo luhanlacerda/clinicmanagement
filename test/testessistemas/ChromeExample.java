@@ -5,7 +5,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 public class ChromeExample {
 
-	public static String driverPath = "/Users/luhanlacerda/Documents/Developer/Git/clinicmanagement/lib-testes/";
+	public static String driverPath = "lib-testes/";
 	public static WebDriver driver;
 
 	public static void main(String[] args) {
