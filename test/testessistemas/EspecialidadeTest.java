@@ -2,8 +2,9 @@ package testessistemas;
 
 import org.junit.After;
 import org.junit.Before;
-import org.junit.Ignore;
+import org.junit.FixMethodOrder;
 import org.junit.Test;
+import org.junit.runners.MethodSorters;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -11,6 +12,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+@FixMethodOrder (MethodSorters.JVM)
 public class EspecialidadeTest {
 
 	private static final String URL = "http://localhost:8080/ClinicManagementFront/index.xhtml";
@@ -30,7 +32,7 @@ public class EspecialidadeTest {
 		driver.close();
 	}
 
-	@Ignore
+	@Test
 	public void testarInserirEspecialidade() {
 		driver.navigate().to(URL);
 
@@ -64,10 +66,10 @@ public class EspecialidadeTest {
 
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='preloader']")));
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//div[@class='preloader']")));
-		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//td[contains(text(),'Chupetinha')]")));
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//td[contains(text(),'Teste Inserir Selenium')]")));
 	}
 
-	@Ignore
+	@Test
 	public void testarAtualizarEspecialidade() {
 		driver.navigate().to(URL);
 
@@ -92,23 +94,16 @@ public class EspecialidadeTest {
 		driver.findElement(By.name("j_idt32:j_idt36:0:j_idt45")).click();
 
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='preloader']")));
-
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='preloader']")));
-
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@placeholder='Descrição']")));
 
 		driver.findElement(By.xpath("//input[@placeholder='Descrição']")).clear();
-
 		driver.findElement(By.xpath("//input[@placeholder='Descrição']")).sendKeys("Teste Alterando Selenium");
-
 		driver.findElement(By.xpath("//input[@value='Cadastrar']")).click();
 
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='preloader']")));
-
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//div[@class='preloader']")));
-
-		wait.until(ExpectedConditions
-				.visibilityOfElementLocated(By.xpath("//td[contains(text(),'Teste Alterando Selenium')]")));
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//td[contains(text(),'Teste Alterando Selenium')]")));
 	}
 	
 	@Test
